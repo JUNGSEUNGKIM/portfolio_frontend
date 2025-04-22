@@ -31,6 +31,7 @@ function App() {
           Click on the Vite and React logos to learn more
           Click on the Vite and React logos to learn more
           Click on the Vite and React logos to learn more
+          이제 내 포트폴리오 사이트 시작
       </p>
     </>
   )
