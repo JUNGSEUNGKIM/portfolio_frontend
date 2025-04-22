@@ -1,4 +1,4 @@
-name: Deploy Frontend
+name: 🚀 Deploy Frontend
 
 on:
   push:
@@ -8,31 +8,48 @@ on:
       - 'frontend/**'
 
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     env:
       IMAGE_NAME: portfolio-frontend
-      DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-      DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
 
     steps:
-      - name: Checkout source
+      - name: 📥 Checkout code
         uses: actions/checkout@v3
 
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
+      - name: 🐳 Set up Docker
+        uses: docker/setup-buildx-action@v2
 
-      - name: Login to Docker Hub
-        uses: docker/login-action@v3
+      - name: 🔐 Docker Hub Login
+        uses: docker/login-action@v2
         with:
-          username: ${{ env.DOCKER_USERNAME }}
-          password: ${{ env.DOCKER_PASSWORD }}
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Build and push Docker image
-        uses: docker/build-push-action@v5
+      - name: 🛠️ Build and Push Frontend Docker Image
+        run: |
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/${{ env.IMAGE_NAME }}:latest ./frontend
+          docker push ${{ secrets.DOCKER_USERNAME }}/${{ env.IMAGE_NAME }}:latest
+
+      - name: 🧑‍💻 SSH into server and deploy
+        uses: appleboy/ssh-action@v0.1.10
         with:
-          context: ./frontend
-          file: ./frontend/Dockerfile
-          push: true
-          tags: ${{ env.DOCKER_USERNAME }}/${{ env.IMAGE_NAME }}:latest
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd /opt/home-server
+            
+            echo "🛑 frontend 컨테이너 중지 및 제거"
+            docker compose stop frontend || true
+            docker compose rm -f frontend || true
+            
+            echo "🗑️ 기존 frontend 이미지 삭제"
+            docker rmi -f ${{ secrets.DOCKER_USERNAME }}/portfolio-frontend:latest || true
+            
+            echo "📥 새 이미지 pull"
+            docker compose pull frontend
+            
+            echo "🚀 컨테이너 재실행"
+            docker compose up -d frontend --remove-orphans
