@@ -1,10 +1,10 @@
-import React from "react";
+// import React from "react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card.tsx";
 import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 import { motion } from "framer-motion";
 
-export default function Arami_main() {
+export default function AramiMain() {
     return (
         <div className="min-h-screen bg-black text-white flex flex-col items-center justify-center px-6">
             <motion.div
@@ -13,7 +13,7 @@ export default function Arami_main() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
             >
-                <h1 className="text-5xl md:text-7xl font-bold mb-4">Hi, I'm JUNGSEUNG</h1>
+                <h1 className="text-5xl md:text-7xl font-bold mb-4">{"Hi, I'm JUNGSEUNG"}</h1>
                 <p className="text-lg md:text-2xl mb-6 text-gray-300 max-w-2xl mx-auto">
                     A passionate full-stack developer with a knack for crafting clean and scalable code.
                 </p>

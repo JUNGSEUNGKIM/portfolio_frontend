@@ -1,19 +1,24 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import path from 'path'
+// import path from 'path'
+// import { fileURLToPath } from 'url'
+import tsconfigPaths from "vite-tsconfig-paths";
 
-// https://vite.dev/config/
+// ✅ ESM 환경에서 __dirname 흉내내기
+// const __filename = fileURLToPath(import.meta.url)
+// const __dirname = path.dirname(__filename)
+
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), tsconfigPaths()],
   server: {
     host: true,
     port: 5173,
-    allowedHosts: ['test.arami.kr'], // 여기에 허용할 도메인 추가!
+    allowedHosts: ['test.arami.kr'],
     hmr: true,
   },
-  resolve: {
-    alias: {
-      '@': path.resolve(__dirname, './src'),
-    },
-  },
+  // resolve: {
+  //   alias: {
+  //     '@': path.resolve(__dirname, './src'),
+  //   },
+  // },
 })
