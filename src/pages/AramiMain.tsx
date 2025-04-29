@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 
 export default function AramiMain() {
     return (
-        <div className="min-h-screen bg-black text-white flex flex-col items-center justify-center px-6">
+        <div className="min-h-screen  flex flex-col items-center justify-center px-6">
             <motion.div
                 className="text-center"
                 initial={{ opacity: 0, y: -20 }}
@@ -18,13 +18,13 @@ export default function AramiMain() {
                     A passionate full-stack developer with a knack for crafting clean and scalable code.
                 </p>
                 <div className="flex justify-center gap-4 mb-8">
-                    <a href="https://github.com/yourgithub" target="_blank" rel="noopener noreferrer">
+                    <a href="https://github.com/JUNGSEUNGKIM" target="_blank" rel="noopener noreferrer">
                         <FaGithub className="w-6 h-6 hover:text-teal-400" />
                     </a>
-                    <a href="https://linkedin.com/in/yourlinkedin" target="_blank" rel="noopener noreferrer">
+                    <a href="https://www.linkedin.com/in/js-kim-884a7432a/" target="_blank" rel="noopener noreferrer">
                         <FaLinkedin className="w-6 h-6 hover:text-blue-400" />
                     </a>
-                    <a href="mailto:your@email.com">
+                    <a href="mailto:kimjs5284@daum.net">
                         <FaEnvelope className="w-6 h-6 hover:text-pink-400" />
                     </a>
                 </div>
@@ -34,7 +34,7 @@ export default function AramiMain() {
             </motion.div>
 
             <motion.div
-                className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-20 max-w-5xl"
+                className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-20 max-w-5xl text-white"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.5, duration: 0.8 }}
