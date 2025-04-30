@@ -1,7 +1,7 @@
 // import React from "react";
-import { Button } from "@/components/ui/button";
+// import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card.tsx";
-import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
+// import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 import { motion } from "framer-motion";
 import SplitFace from "@/components/SplitFace.tsx"
 

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 const SplitFace = () => {
     const [hovered, setHovered] = useState<"left" | "right" | null>(null);
