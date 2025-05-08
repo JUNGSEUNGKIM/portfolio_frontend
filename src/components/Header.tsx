@@ -6,7 +6,7 @@ const Header: React.FC = () => {
 
     return (
         <motion.div
-            className="fixed top-0 left-0 w-full bg-black text-white z-50 px-6 py-2"
+            className=" top-0 left-0 w-full bg-black text-white z-50 px-6 py-2"
             initial={{ opacity: 0, y: -50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.8, ease: "easeOut" }}
@@ -14,7 +14,7 @@ const Header: React.FC = () => {
             <div className="max-w-6xl mx-auto flex items-center justify-between">
                 {/* Left: Logo */}
                 <a href="/" className="flex items-center space-x-2">
-                    <img src="/AJ_logo.png" alt="Logo" className="w-16 h-16 object-contain" />
+                    <img src="/logo_rect.png" alt="Logo" className="w-16 h-16 object-contain" />
                     <span className="sr-only">Home</span>
                 </a>
 
