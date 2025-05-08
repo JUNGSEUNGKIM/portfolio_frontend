@@ -4,7 +4,7 @@ import { Card, CardContent } from "@/components/ui/card.tsx";
 // import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 import { motion } from "framer-motion";
 import SplitFace from "@/components/SplitFace.tsx"
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
 export default function AramiMain() {
     return (
@@ -37,7 +37,7 @@ export default function AramiMain() {
             </motion.div>
 
             <motion.div
-                className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-32 max-w-7xl text-white"
+                className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-32 max-w-7xl text-white"
                 initial={{ opacity: 0, y: -50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1.5, duration: 0.8, ease: "easeOut" }}
@@ -58,7 +58,7 @@ export default function AramiMain() {
                     image="/3.png"
                     title="Interior design news feed"
                     category="Side project"
-                    description="Get the latest insights and articles on what today’s home buyer wants from their renovation, covering trends, costs, and practical tips."
+                    description="et the latest insights and articles on what today’s home buyer wants from their renovation, covering trends, cet the latest insights and articles on what today’s home buyer wants from their renovation, covering trends, cet the latest insights and articles on what today’s home buyer wants from their renovation, covering trends, cGet the latest insights and articles on what today’s home buyer wants from their renovation, covering trends, costs, and practical tips."
                 />
 
 
@@ -143,10 +143,10 @@ const ExpandableCard = ({ image, title, category, description }) => {
             <img
                 src={image}
                 alt={title}
-                className="w-full h-48 object-cover rounded-t-2xl"
+                className="w-full h-72 object-cover rounded-2xl shadow"
             />
-            <CardContent className={`p-6 transition-all duration-300 ${expanded ? "max-h-[500px]" : "max-h-48 overflow-hidden"}`}>
-                <h3 className="text-lg font-semibold mb-1">{title}</h3>
+            <CardContent className={`px-4 transition-all duration-300 ${expanded ? "max-h-[500px]" : "max-h-28 overflow-hidden"}`}>
+                <p className="text-lg mb-1 text-black">{title}</p>
                 <p className="text-gray-500 text-sm mb-2">{category}</p>
                 <p className={`text-gray-600 text-sm ${expanded ? "" : "line-clamp-3"}`}>
                     {description}

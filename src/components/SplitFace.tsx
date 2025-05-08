@@ -4,7 +4,7 @@ const SplitFace = () => {
     const [hovered, setHovered] = useState<"left" | "right" | null>(null);
 
     return (
-        <section className="relative w-full h-screen overflow-hidden">
+        <section className="relative w-full h-screen overflow-hidden shadow-md">
             {/* Based image always visible */}
             <img
                 src="/3.png"
