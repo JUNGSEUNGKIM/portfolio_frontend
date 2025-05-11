@@ -4,7 +4,7 @@ import { Card, CardContent } from "@/components/ui/card.tsx";
 // import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 import { motion } from "framer-motion";
 import SplitFace from "@/components/SplitFace.tsx"
-import {useEffect, useState} from "react";
+import {useState} from "react";
 
 export default function AramiMain() {
     return (
@@ -138,9 +138,14 @@ export default function AramiMain() {
         </div>
     );
 }
+interface ExpandableCardProps {
+    image: string;
+    title: string;
+    category: string;
+    description: string;
+}
 
-
-const ExpandableCard = ({ image, title, category, description }) => {
+const ExpandableCard: React.FC<ExpandableCardProps> = ({ image, title, category, description }) => {
     const [expanded, setExpanded] = useState(false);
 
     return (
