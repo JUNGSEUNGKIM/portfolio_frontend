@@ -36,11 +36,19 @@ export default function AramiMain() {
                 <SplitFace/>
             </motion.div>
 
+            <div className="flex items-center justify-center w-full my-16">
+                <div className="w-full max-w-7xl flex items-center">
+                    <div className="flex-grow border-t border-gray-300 mr-6 ml-12"></div>
+                    <span className="mx-4 text-xl font-semibold text-gray-500 ">Portfolio</span>
+                    <div className="flex-grow border-t border-gray-300 ml-6 mr-12"></div>
+                </div>
+            </div>
+
             <motion.div
-                className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-32 max-w-7xl text-white"
-                initial={{ opacity: 0, y: -50 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1.5, duration: 0.8, ease: "easeOut" }}
+                className="grid grid-cols-1 md:grid-cols-3 gap-8  max-w-7xl text-white"
+                initial={{opacity: 0, y: -50}}
+                animate={{opacity: 1, y: 0}}
+                transition={{delay: 1.5, duration: 0.8, ease: "easeOut"}}
             >
                 <ExpandableCard
                     image="/3.png"
