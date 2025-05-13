@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import SplitFace from "@/components/SplitFace.tsx"
 import {useState} from "react";
 
-export default function AramiMain() {
+export default function PortfolioBoard() {
     return (
         <div className="min-h-screen  flex flex-col items-center justify-center px-6">
             <motion.div
@@ -14,7 +14,7 @@ export default function AramiMain() {
                 initial={{opacity: 0, y: -50}}
                 animate={{opacity: 1, y: 0}}
                 transition={{delay: 0.8, duration: 0.8, ease: "easeOut"}}
-                >
+            >
                 {/*<h1 className="text-5xl md:text-7xl font-bold mb-4">{"Hi, I'm JUNGSEUNG"}</h1>*/}
                 {/*<p className="text-lg md:text-2xl mb-6 text-gray-300 max-w-2xl mx-auto">*/}
                 {/*    A passionate full-stack developer with a knack for crafting clean and scalable code.*/}
@@ -36,27 +36,10 @@ export default function AramiMain() {
                 <SplitFace/>
             </motion.div>
             <motion.div
-                className="w-full h-auto block"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 1.5, duration: 0.8 }}
-            >
-
-                <div className="flex items-center justify-center w-full my-16">
-                    <div className="w-full max-w-7xl flex items-center">
-                        <div className="flex-grow border-t border-gray-300 mr-6 ml-12"></div>
-                        <span className="mx-4 text-xl font-semibold text-gray-500 ">Portfolio</span>
-                        <div className="flex-grow border-t border-gray-300 ml-6 mr-12"></div>
-                    </div>
-                </div>
-            </motion.div>
-
-
-            <motion.div
                 className="grid grid-cols-1 md:grid-cols-3 gap-8  max-w-7xl text-white"
                 initial={{opacity: 0, y: -50}}
                 animate={{opacity: 1, y: 0}}
-                transition={{delay: 2.0, duration: 0.8, ease: "easeOut"}}
+                transition={{delay: 0.8, duration: 0.8, ease: "easeOut"}}
             >
                 <ExpandableCard
                     image="/3.png"
@@ -144,8 +127,10 @@ export default function AramiMain() {
 
             </motion.div>
         </div>
+
     );
 }
+
 interface ExpandableCardProps {
     image: string;
     title: string;
@@ -153,7 +138,7 @@ interface ExpandableCardProps {
     description: string;
 }
 
-const ExpandableCard: React.FC<ExpandableCardProps> = ({ image, title, category, description }) => {
+const ExpandableCard: React.FC<ExpandableCardProps> = ({image, title, category, description}) => {
     const [expanded, setExpanded] = useState(false);
 
     return (
@@ -166,7 +151,8 @@ const ExpandableCard: React.FC<ExpandableCardProps> = ({ image, title, category,
                 alt={title}
                 className="w-full h-72 object-cover rounded-2xl shadow"
             />
-            <CardContent className={`px-4 transition-all duration-300 ${expanded ? "max-h-[500px]" : "max-h-28 overflow-hidden"}`}>
+            <CardContent
+                className={`px-4 transition-all duration-300 ${expanded ? "max-h-[500px]" : "max-h-28 overflow-hidden"}`}>
                 <p className="text-lg mb-1 text-black">{title}</p>
                 <p className="text-gray-500 text-sm mb-2">{category}</p>
                 <p className={`text-gray-600 text-sm ${expanded ? "" : "line-clamp-3"}`}>

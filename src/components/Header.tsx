@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import {Link} from "react-router-dom";
 
 const Header: React.FC = () => {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -22,7 +23,7 @@ const Header: React.FC = () => {
                 <nav className="hidden md:flex space-x-10 text-lg font-light">
                     <a href="#about" className="hover:text-gray-400">about</a>
                     <a href="#learn" className="hover:text-gray-400">learn</a>
-                    <a href="#portfolio" className="hover:text-gray-400">portfolio</a>
+                    <Link to="/portfolio" className="hover:text-gray-400">portfolio</Link>
                     <a href="#blog" className="hover:text-gray-400">blog</a>
                     <a href="#contact" className="hover:text-gray-400">contact</a>
                 </nav>
