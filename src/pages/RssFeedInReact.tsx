@@ -11,7 +11,7 @@ export default function RssFeedInReact() {
     const [posts, setPosts] = useState<RssPost[]>([])
 
     useEffect(() => {
-        fetch('http://localhost:3000/api/rss')
+        fetch('https://core.arami.kr/api/rss')
             .then((res) => res.json())
             .then(setPosts)
             .catch(console.error)
