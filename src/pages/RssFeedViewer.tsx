@@ -1,7 +1,13 @@
 import { useEffect, useState } from 'react';
 import { API_BASE_URL } from '@/config';
 export default function RssFeedViewer() {
-    const [items, setItems] = useState([]);
+    type RssItem = {
+        title: string;
+        url: string;
+        html: string;
+    };
+
+    const [items, setItems] = useState<RssItem[]>([]);
 
     useEffect(() => {
         fetch(`${API_BASE_URL}/feed/md-list`)
