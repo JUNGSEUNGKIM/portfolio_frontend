@@ -22,9 +22,9 @@ const Header: React.FC = () => {
                 {/* Center: Navigation (Desktop) */}
                 <nav className="hidden md:flex space-x-10 text-lg font-light">
                     <a href="#about" className="hover:text-gray-400">about</a>
-                    <a href="#learn" className="hover:text-gray-400">learn</a>
+                    <Link to="/learn" className="hover:text-gray-400">learn</Link>
                     <Link to="/portfolio" className="hover:text-gray-400">portfolio</Link>
-                    <a href="#blog" className="hover:text-gray-400">blog</a>
+                    <Link to="/blog" className="hover:text-gray-400">blog</Link>
                     <a href="#contact" className="hover:text-gray-400">contact</a>
                 </nav>
 
