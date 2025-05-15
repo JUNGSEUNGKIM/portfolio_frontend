@@ -8,6 +8,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import PortfolioBoard from "@/pages/PortfolioBoard.tsx";
 import RssFeedInReact from "@/pages/RssFeedInReact.tsx";
+import RssFeedViewer from "@/pages/RssFeedViewer.tsx";
 // import Body from "@/components/Body.tsx";
 
 createRoot(document.getElementById('root')!).render(
@@ -18,7 +19,9 @@ createRoot(document.getElementById('root')!).render(
                 <Routes>
                     <Route path="/" element={<AramiMain />} />
                     <Route path="/portfolio" element={<PortfolioBoard />} />
-                    <Route path="/learn" element={<RssFeedInReact />} />
+                    <Route path="/blog" element={<RssFeedInReact />} />
+                    <Route path="/learn" element={<RssFeedViewer />} />
+
                 </Routes>
             </main>
             <Footer />

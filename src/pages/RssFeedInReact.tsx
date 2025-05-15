@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { API_BASE_URL } from '@/config';
 
 interface RssPost {
     title: string
@@ -11,7 +12,8 @@ export default function RssFeedInReact() {
     const [posts, setPosts] = useState<RssPost[]>([])
 
     useEffect(() => {
-        fetch('https://core.arami.kr/api/rss')
+        fetch(`${API_BASE_URL}/api/rss`)
+        // fetch('https://core.arami.kr/api/rss')
             .then((res) => res.json())
             .then(setPosts)
             .catch(console.error)
