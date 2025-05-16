@@ -9,6 +9,7 @@ import Footer from "@/components/Footer";
 import PortfolioBoard from "@/pages/PortfolioBoard.tsx";
 import RssFeedInReact from "@/pages/RssFeedInReact.tsx";
 import RssFeedViewer from "@/pages/RssFeedViewer.tsx";
+import AboutPage from "@/pages/AboutPage.tsx";
 // import Body from "@/components/Body.tsx";
 
 createRoot(document.getElementById('root')!).render(
@@ -21,7 +22,7 @@ createRoot(document.getElementById('root')!).render(
                     <Route path="/portfolio" element={<PortfolioBoard />} />
                     <Route path="/blog" element={<RssFeedInReact />} />
                     <Route path="/learn" element={<RssFeedViewer />} />
-
+                    <Route path="/about" element={<AboutPage />} />
                 </Routes>
             </main>
             <Footer />
