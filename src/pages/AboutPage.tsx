@@ -167,8 +167,11 @@ const timelineData = [
 export default function AboutPage() {
     const containerRef = useRef<HTMLDivElement | null>(null);
     const scrollWrapperRef = useRef<HTMLDivElement | null>(null);
+    const topTable = useRef<HTMLDivElement | null>(null);
+
     const [trackWidth, setTrackWidth] = useState(0);
 
+    // 트랙 너비 측정
     useLayoutEffect(() => {
         const wrapper = scrollWrapperRef.current;
         const track = wrapper?.querySelector(".timeline-track") as HTMLElement | null;
@@ -182,6 +185,16 @@ export default function AboutPage() {
         return () => resizeObserver.disconnect();
     }, []);
 
+    // 리사이즈 대응
+    useEffect(() => {
+        const handleResize = () => {
+            ScrollTrigger.refresh();
+        };
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
+
+    // GSAP 애니메이션
     useEffect(() => {
         const ctx = gsap.context(() => {
             const wrapper = scrollWrapperRef.current;
@@ -196,17 +209,18 @@ export default function AboutPage() {
                 scrollTrigger: {
                     trigger: wrapper,
                     start: "top top",
-                    end: () => `+=${totalWidth}`,
+                    end: () => `+=${trackWidth - window.innerWidth+1000 }`,
                     pin: true,
                     scrub: 1,
-                    anticipatePin: 1,
+                    // anticipatePin: 0,
+                    markers: true,
                 },
             });
 
             gsap.utils.toArray<HTMLElement>(".year-block").forEach((block) => {
                 gsap.fromTo(
                     block,
-                    { opacity: 0, y: 100 },
+                    { opacity: 0, y: 200 },
                     {
                         opacity: 1,
                         y: 0,
@@ -221,47 +235,78 @@ export default function AboutPage() {
                 );
             });
 
-            gsap.utils.toArray<HTMLElement>(".circle-img").forEach((circle) => {
-                gsap.to(circle, {
-                    rotate: 360,
-                    opacity: 1,
-                    duration: 2,
-                    scrollTrigger: {
-                        trigger: circle,
-                        scrub: 1,
-                        start: "left center",
-                    },
-                });
+            gsap.to(".circle-img", {
+                rotate: 1440,
+                ease: "none",
+                scrollTrigger: {
+                    trigger: ".timeline-track", // 전체 트랙 기준
+                    start: "left left",
+                    end: "right right",
+                    scrub: true,
+                },
             });
         }, containerRef);
 
         return () => ctx.revert();
-    }, []);
+    }, [trackWidth]);
 
     return (
-        <div ref={containerRef} className="relative w-full bg-gray-50">
-            {/*<div style={{ height: `${trackWidth - window.innerWidth}px` }}></div>*/}
-
-            <div
-                ref={scrollWrapperRef}
-                className="fixed top-0 left-0 w-full h-screen overflow-hidden"
-            >
-                <h2 className="text-3xl font-bold text-center py-10 bg-gray-50">인생 연혁</h2>
+        <div>
+            <div ref={topTable} className="h-80 bg-yellow-300 z-20"></div>
+            <div ref={containerRef} className="relative w-full bg-gray-50">
                 <div
-                    className="timeline-track flex h-full px-20 items-center"
-                    style={{ width: `${trackWidth}px`, minWidth: `${trackWidth}px` }}
+                    ref={scrollWrapperRef}
+                    className="sticky top-0 left-0 w-full h-screen overflow-hidden bg-green-300 flex justify-normal
+                    "
                 >
-                    {timelineData.map((item, index) => (
-                        <div
-                            key={index}
-                            className="year-block relative flex-shrink-0 w-screen flex flex-col items-center justify-center"
-                        >
-                            <div className="circle-img w-20 h-20 rounded-full bg-blue-200 opacity-0 mb-6"></div>
-                            <h3 className="text-4xl font-bold text-gray-800 mb-4">{item.year}</h3>
-                            <p className="text-lg text-center text-gray-600 max-w-md">{item.description}</p>
+                    <div
+                        className="timeline-track flex h-full px-20 items-center "
+                        style={{
+                            width: `${trackWidth}px`,
+                            minWidth: `${trackWidth}px`,
+                        }}
+                    >
+                        <div className="year-block relative flex-shrink-0 w-screen flex flex-col items-center justify-center">
+                            인생 연혁
                         </div>
-                    ))}
+                        {timelineData.map((item, index) => (
+                            <div>
+                                <div className="w-full border-t-8 border-dotted border-amber-600 mx-3"></div>
+                                <div
+                                    key={index}
+                                    className="year-block relative flex-shrink-0 w-48 mx-44 flex flex-col items-center justify-start"
+                                >
+
+                                    <div className="relative w-full flex justify-center -mt-3 mb-5">
+                                        {/* 연결 점 */}
+                                        <div className="w-4 h-4 bg-gray-500 rounded-full"></div>
+                                    </div>
+
+                                    <div
+                                        className="bg-white shadow-lg border rounded-xl p-4 w-64 h-[360px] flex flex-col justify-start items-center">
+                                        {/* 이미지 */}
+                                        <div
+                                            className="circle-img w-40 h-40 rounded-md bg-blue-200 overflow-hidden mb-4">
+                                            <img
+                                                src="/1.png"
+                                                alt="폴라로이드 이미지"
+                                                className="w-full h-full object-cover"
+                                            />
+                                        </div>
+
+                                        {/* 텍스트 */}
+                                        <h3 className="text-2xl font-bold text-gray-800 mb-2">{item.year}</h3>
+                                        <p className="text-sm text-center text-gray-600 px-2">{item.description}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
                 </div>
+            </div>
+            {/* ✅ 스크롤을 부드럽게 이어주는 영역 */}
+            <div className="h-[100vh] bg-white flex items-center justify-center text-gray-400 text-2xl">
+                끝입니다 😄
             </div>
         </div>
     );

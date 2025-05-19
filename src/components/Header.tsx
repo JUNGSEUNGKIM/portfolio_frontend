@@ -21,7 +21,7 @@ const Header: React.FC = () => {
 
                 {/* Center: Navigation (Desktop) */}
                 <nav className="hidden md:flex space-x-10 text-lg font-light">
-                    <a href="#about" className="hover:text-gray-400">about</a>
+                    <Link to="/about" className="hover:text-gray-400">about</Link>
                     <Link to="/learn" className="hover:text-gray-400">learn</Link>
                     <Link to="/portfolio" className="hover:text-gray-400">portfolio</Link>
                     <Link to="/blog" className="hover:text-gray-400">blog</Link>
@@ -48,7 +48,7 @@ const Header: React.FC = () => {
             {/* Mobile Menu Dropdown */}
             {menuOpen && (
                 <div className="md:hidden mt-4 space-y-2 text-lg">
-                    <a href="#about" className="block hover:text-gray-400">about</a>
+                    <Link to="/about" onClick={() => setMenuOpen(!menuOpen)} className="block hover:text-gray-400">about</Link>
                     <a href="#learn" className="block hover:text-gray-400">learn</a>
                     <a href="#portfolio" className="block hover:text-gray-400">portfolio</a>
                     <a href="#blog" className="block hover:text-gray-400">blog</a>
