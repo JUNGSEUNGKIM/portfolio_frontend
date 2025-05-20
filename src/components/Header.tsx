@@ -49,10 +49,10 @@ const Header: React.FC = () => {
             {menuOpen && (
                 <div className="md:hidden mt-4 space-y-2 text-lg">
                     <Link to="/about" onClick={() => setMenuOpen(!menuOpen)} className="block hover:text-gray-400">about</Link>
-                    <a href="#learn" className="block hover:text-gray-400">learn</a>
-                    <a href="#portfolio" className="block hover:text-gray-400">portfolio</a>
-                    <a href="#blog" className="block hover:text-gray-400">blog</a>
-                    <a href="#contact" className="block hover:text-gray-400">contact</a>
+                    <Link to="/learn" onClick={() => setMenuOpen(!menuOpen)} className="block hover:text-gray-400">learn</Link>
+                    <Link to="/portfolio" onClick={() => setMenuOpen(!menuOpen)} className="block hover:text-gray-400">portfolio</Link>
+                    <Link to="/blog" onClick={() => setMenuOpen(!menuOpen)} className="block hover:text-gray-400">blog</Link>
+                    <Link to="#contact" onClick={() => setMenuOpen(!menuOpen)} className="block hover:text-gray-400">contact</Link>
                 </div>
             )}
         </motion.div>
