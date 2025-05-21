@@ -16,7 +16,7 @@ createRoot(document.getElementById('root')!).render(
     <BrowserRouter>
         <div className="flex flex-col min-h-screen">
             <Header />
-            <main className="flex-1 pt-1">
+            <main className="flex-1 ">
                 <Routes>
                     <Route path="/" element={<AramiMain />} />
                     <Route path="/portfolio" element={<PortfolioBoard />} />
