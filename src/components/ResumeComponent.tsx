@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 
 const ResumeComponent = () => {
     const skills = [
@@ -12,26 +12,36 @@ const ResumeComponent = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 min-h-screen text-sm font-sans">
             {/* Left Sidebar */}
             <aside className="bg-gray-800 text-white p-6 flex flex-col items-center md:items-center">
-                <div className="bg-white text-black w-full md:w-auto md:h-full p-6 text-center md:text-center">
-                    <h1 className="text-4xl font-extrabold">JUNGSEUNG</h1>
-                    <p className="mb-2">김정승</p>
-                    <div className="border-t border-amber-100 my-2 w-10 mx-auto md:mx-0" />
-                    <p>1990.02.02</p>
-                    <p>010-1234-5678</p>
-                    <p>MIRI@miri.com</p>
-                    <p className="mt-1">미리디자인 포럼</p>
+                <div className=" text-black w-full  md:w-auto md:h-full text-center md:text-center bg-gray-100"
+                >
+                    <div className="h-36 bg-gradient-to-b from-gray-800 via-gray-300 to-gray-100 "></div>
 
-                    <div className="mt-6">
-                        <img
-                            src="/profile.jpg"
-                            alt="profile"
-                            className="rounded-full w-28 h-28 object-cover border-2 border-white mx-auto md:mx-0"
-                        />
-                        <p className="mt-4 text-xs text-center md:text-left">
-                            이 서식의 상업적 이용을 금합니다.
-                        </p>
+                    <div className="mx-6 items-center">
+                        <h1 className="text-4xl font-extrabold mb-10">JUNGSEUNG</h1>
+                        <p className="mb-2 text-2xl font-extrabold">김정승</p>
+
+                        <div className="border-t-4 border-gray-500 my-2 w-10 " />
+                        <p>1990.02.02</p>
+                        <p>010-1234-5678</p>
+                        <p>MIRI@miri.com</p>
+                        <p className="mt-1">미리디자인 포럼</p>
+
+                        <div className="mt-6">
+                            <img
+                                src="/profile.jpg"
+                                alt="profile"
+                                className="rounded-full w-28 h-28 object-cover border-2 border-white mx-auto md:mx-0"
+                            />
+
+                        </div>
+                        <div>
+                            <p className="mt-4 text-xs text-center md:text-left">
+                                이 서식의 상업적 이용을 금합니다.
+                            </p>
+                            <p className="text-xs mt-6">2025 Portfolio</p>
+                        </div>
                     </div>
-                    <p className="text-xs mt-6">2030 Portfolio</p>
+
                 </div>
 
             </aside>
