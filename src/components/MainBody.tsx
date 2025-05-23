@@ -4,9 +4,9 @@ const MainBody = () => {
     // const [hovered, setHovered] = useState<"left" | "right" | null>(null);
 
     return (
-        <section className="relative w-full h-screen overflow-hidden ">
-            <div className="w-full h-screen text-white flex flex-col items-center p-6
-  bg-gradient-to-b from-black via-gray-800 to-gray-800">
+        <section className="relative w-full h-1/5 overflow-hidden ">
+            <div className="w-full h-2/5 text-black flex flex-col items-center p-6">
+                {/*bg-gradient-to-b from-black via-gray-800 to-gray-800">*/}
                 {/*<div className="absolute top-6 left-6 text-sm">*/}
                 {/*    <p>CONTACT</p>*/}
                 {/*    <p>+82 - 10 - 1234 - 5678</p>*/}
@@ -22,10 +22,10 @@ const MainBody = () => {
                     {/*<p className="italic font-handwriting text-xl mt-2">Were you looking for me?</p>*/}
                 </div>
 
-                <div className="flex items-center justify-center w-full my-16">
+                <div className="flex items-center justify-center w-full ">
                     <div className="w-full  flex items-center">
                         <div className="flex-grow border-t border-gray-300 mr-6 "></div>
-                        <span className="mx-4 text-xl font-semibold text-gray-500 ">Portfolio</span>
+                        <span className="mx-4 text-xl font-semibold text-gray-500 ">Skills & Competencies</span>
                         <div className="flex-grow border-t border-gray-300 ml-6 "></div>
                     </div>
                 </div>

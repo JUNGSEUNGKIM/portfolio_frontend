@@ -13,7 +13,7 @@ export default function AramiMain() {
         <div className="min-h-screen  flex flex-col items-center justify-center ">
             <motion.div
                 className="w-full max-w-full mx-auto text-center
-                {/*max-h-[60vh] sm:max-h-[10vh] md:max-h-[30vh] lg:max-h-[60vh] */}
+
                 flex flex-col justify-center"
                 initial={{opacity: 0, y: -50}}
                 animate={{opacity: 1, y: 0}}
@@ -21,39 +21,40 @@ export default function AramiMain() {
                 >
                 {/*<SplitFace/>*/}
                 <MainBody/>
-
-            </motion.div>
-            <motion.div
-                className="w-full max-w-full mx-auto text-center
-
-                 flex flex-col justify-center"
-                initial={{opacity: 0, y: -50}}
-                animate={{opacity: 1, y: 0}}
-                transition={{delay: 0.8, duration: 0.8, ease: "easeOut"}}
-            >
-                {/*<SplitFace/>*/}
                 <ResumeComponent/>
 
             </motion.div>
+            {/*<motion.div*/}
+            {/*    className="w-full max-w-full mx-auto text-center*/}
+
+            {/*     flex flex-col justify-center"*/}
+            {/*    initial={{opacity: 0, y: -50}}*/}
+            {/*    animate={{opacity: 1, y: 0}}*/}
+            {/*    transition={{delay: 0.8, duration: 0.8, ease: "easeOut"}}*/}
+            {/*>*/}
+            {/*    /!*<SplitFace/>*!/*/}
+            {/*    <ResumeComponent/>*/}
+
+            {/*</motion.div>*/}
             <motion.div
-                className="w-full h-auto block"
+                className="w-full h-auto block p-6 my-10"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1.5, duration: 0.8 }}
             >
 
-                <div className="flex items-center justify-center w-full my-16">
-                    <div className="w-full max-w-7xl flex items-center">
-                        <div className="flex-grow border-t border-gray-300 mr-6 ml-12"></div>
-                        <span className="mx-4 text-xl font-semibold text-gray-500 ">Portfolio</span>
-                        <div className="flex-grow border-t border-gray-300 ml-6 mr-12"></div>
+                <div className="flex items-center justify-center w-full ">
+                    <div className="w-full  flex items-center">
+                        <div className="flex-grow border-t border-gray-300 mr-6 "></div>
+                        <span className="mx-4 text-xl font-semibold text-gray-500 ">Skills & Competencies</span>
+                        <div className="flex-grow border-t border-gray-300 ml-6 "></div>
                     </div>
                 </div>
             </motion.div>
 
 
             <motion.div
-                className="grid grid-cols-1 md:grid-cols-3 gap-8  max-w-7xl text-white"
+                className="grid grid-cols-1 md:grid-cols-3 gap-8  w-full text-white"
                 initial={{opacity: 0, y: -50}}
                 animate={{opacity: 1, y: 0}}
                 transition={{delay: 2.0, duration: 0.8, ease: "easeOut"}}
