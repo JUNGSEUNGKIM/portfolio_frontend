@@ -9,7 +9,7 @@ const ResumeComponent = () => {
     ];
 
     return (
-        <div className="grid grid-cols-1 md:grid-cols-5 min-h-screen text-sm font-sans bg-gray-50
+        <div className="grid grid-cols-1 md:grid-cols-5 min-h-screen text-sm font-sans
                        rounded-2xl md:mx-8 mx-1
         ">
             {/* Left Sidebar */}
@@ -54,18 +54,41 @@ const ResumeComponent = () => {
             </aside>
 
             {/* Right Content */}
-            <main className="md:col-span-4  text-gray-400 p-6 grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <section>
+            <main className="md:col-span-4  text-gray-400 p-6 grid grid-cols-1 sm:grid-cols-2 gap-6 ">
+                <section className="items-center ">
                     <h2 className="font-bold border-b border-gray-300 mb-2">CAREER</h2>
 
-                    <div className="space-y-4 text-gray-700 text-sm">
-
-                        {/* 첫 경력 */}
-                        <div>
-                            <p className="font-semibold">2031.03 | 미리디 인터N년</p>
+                    <div className="space-y-4 text-gray-700 text-xs sm:text-sm max-w-72 mx-auto ">
+                        <div className="items-start">
+                            <p className="font-semibold">2024.10 – 현재 | Emma Healthcare</p>
+                            <ul className="list-disc list-outside pl-5 mt-1 space-y-1 text-gray-600 text-left">
+                                <li>RSpring Boot, NestJS, Python을 활용한 REST API 개발</li>
+                                <li>서버 성능 최적화 및 배포</li>
+                                <li>JavaScript 기반 MediaPipe, OpenCV 활용 영상/이미지 처리</li>
+                            </ul>
+                        </div>
+                        <div className="items-start">
+                            <p className="font-semibold">2018.09 – 2023.09 | 진성회계법인제주지점</p>
+                            <ul className="list-disc list-outside pl-5 mt-1 space-y-1 text-gray-600 text-left">
+                                <li>법인 세무 조정 및 신고</li>
+                                <li>개인 부가세신고, 세무기장, 세무조정, 세무신고</li>
+                            </ul>
                         </div>
 
-                        {/* 두 번째 경력 */}
+                    </div>
+                </section>
+
+                <section className="items-center ">
+                    <h2 className="font-bold border-b border-gray-300 mb-2">EDUCATION</h2>
+
+                    <div className="space-y-4 text-gray-700 text-xs sm:text-sm max-w-72 mx-auto ">
+                        <div className="items-start">
+                            <p className="font-semibold">2024.10 – 현재 | Emma Healthcare</p>
+                            <ul className="list-disc list-outside pl-5 mt-1 space-y-1 text-gray-600 text-left">
+                                <li>React 기반 어드민 페이지 개발</li>
+                                <li>NestJS 백엔드와 연동한 대시보드 구축</li>
+                            </ul>
+                        </div>
                         <div className="items-start">
                             <p className="font-semibold">2022.07 – 현재 | Emma Healthcare</p>
                             <ul className="list-disc list-outside pl-5 mt-1 space-y-1 text-gray-600 text-left">
@@ -77,26 +100,70 @@ const ResumeComponent = () => {
                     </div>
                 </section>
 
-                <section>
-                    <h2 className="font-bold border-b border-gray-300 mb-2">EDUCATION</h2>
-                    <p>2026.02 미타대학교 졸업</p>
-                    <p>2028.03 미타대 실내디자인학과 졸업</p>
-                    <p>2030.03 미타대 실내디자인 석사 과정 이수</p>
+                <section className="items-center ">
+                    <h2 className="font-bold border-b border-gray-300 mb-2">OTHER EXPERIENC</h2>
+
+                    <div className="space-y-4 text-gray-700 text-xs sm:text-sm max-w-72 mx-auto ">
+                        <div className="items-start">
+                            <p className="font-semibold">2024.10 – 현재 | Emma Healthcare</p>
+                            <ul className="list-disc list-outside pl-5 mt-1 space-y-1 text-gray-600 text-left">
+                                <li>React 기반 어드민 페이지 개발</li>
+                                <li>NestJS 백엔드와 연동한 대시보드 구축</li>
+                            </ul>
+                        </div>
+                        <div className="items-start">
+                            <p className="font-semibold">2022.07 – 현재 | Emma Healthcare</p>
+                            <ul className="list-disc list-outside pl-5 mt-1 space-y-1 text-gray-600 text-left">
+                                <li>React 기반 어드민 페이지 개발</li>
+                                <li>NestJS 백엔드와 연동한 대시보드 구축</li>
+                            </ul>
+                        </div>
+
+                    </div>
                 </section>
 
-                <section>
-                    <h2 className="font-bold border-b border-gray-300 mb-2">OTHER EXPERIENCE</h2>
-                    <p>2026.07 유기견 보호센터 봉사활동</p>
-                    <p>2027.08 어린이 재능기부 활동</p>
-                    <p>2026.04 실내디자인전 전시</p>
-                </section>
-
-                <section>
+                <section className="items-center ">
                     <h2 className="font-bold border-b border-gray-300 mb-2">AWARDS</h2>
-                    <p>2027.11 실내건축 공모전 수상</p>
-                    <p>2028.08 공간디자인 공모전 수상</p>
-                    <p>2028.04 인터리어디자인 최우수상 수상</p>
+
+                    <div className="space-y-4 text-gray-700 text-sm max-w-72 mx-auto ">
+                        <div className="items-start">
+                            <p className="font-semibold">2024.10 – 현재 | Emma Healthcare</p>
+                            <ul className="list-disc list-outside pl-5 mt-1 space-y-1 text-gray-600 text-left">
+                                <li>React 기반 어드민 페이지 개발</li>
+                                <li>NestJS 백엔드와 연동한 대시보드 구축</li>
+                            </ul>
+                        </div>
+                        <div className="items-start">
+                            <p className="font-semibold">2022.07 – 현재 | Emma Healthcare</p>
+                            <ul className="list-disc list-outside pl-5 mt-1 space-y-1 text-gray-600 text-left">
+                                <li>React 기반 어드민 페이지 개발</li>
+                                <li>NestJS 백엔드와 연동한 대시보드 구축</li>
+                            </ul>
+                        </div>
+
+                    </div>
                 </section>
+
+                {/*<section>*/}
+                {/*    <h2 className="font-bold border-b border-gray-300 mb-2">EDUCATION</h2>*/}
+                {/*    <p>2026.02 미타대학교 졸업</p>*/}
+                {/*    <p>2028.03 미타대 실내디자인학과 졸업</p>*/}
+                {/*    <p>2030.03 미타대 실내디자인 석사 과정 이수</p>*/}
+                {/*</section>*/}
+
+                {/*<section>*/}
+                {/*    <h2 className="font-bold border-b border-gray-300 mb-2">OTHER EXPERIENCE</h2>*/}
+                {/*    <p>2026.07 유기견 보호센터 봉사활동</p>*/}
+                {/*    <p>2027.08 어린이 재능기부 활동</p>*/}
+                {/*    <p>2026.04 실내디자인전 전시</p>*/}
+                {/*</section>*/}
+
+                {/*<section>*/}
+                {/*    <h2 className="font-bold border-b border-gray-300 mb-2">AWARDS</h2>*/}
+                {/*    <p>2027.11 실내건축 공모전 수상</p>*/}
+                {/*    <p>2028.08 공간디자인 공모전 수상</p>*/}
+                {/*    <p>2028.04 인터리어디자인 최우수상 수상</p>*/}
+                {/*</section>*/}
 
                 <section className="col-span-1 sm:col-span-2">
                     <h2 className="font-bold border-b border-gray-300 mb-4">SKILL</h2>
