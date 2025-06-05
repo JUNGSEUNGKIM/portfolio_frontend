@@ -149,6 +149,10 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import {Swiper, SwiperSlide} from "swiper/react";
+import {Autoplay} from "swiper/modules";
+import 'swiper/css';
+import 'swiper/css/pagination';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -306,6 +310,56 @@ export default function AboutPage() {
             </div>
             {/* ✅ 스크롤을 부드럽게 이어주는 영역 */}
             <div className="h-[100vh] bg-white flex items-center justify-center text-gray-400 text-2xl">
+                <div className="w-full h-1/4 px-4">
+                    <Swiper
+                        modules={[Autoplay]}
+                        autoplay={{ delay: 3999, disableOnInteraction: false }}
+                        loop={true}
+                        spaceBetween={10}
+                        className="w-full h-full"
+                        breakpoints={{
+                            0: {
+                                slidesPerView: 1, // 모바일
+                            },
+                            768: {
+                                slidesPerView: 2, // 태블릿
+                            },
+                            1024: {
+                                slidesPerView: 4, // 데스크탑 이상
+                            },
+                        }}
+
+                    >
+                        <SwiperSlide>
+                            <img src="/test1.mov" alt="Project 1" className="w-full h-full object-cover rounded-lg" />
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <video autoPlay loop muted className="w-full h-full object-cover rounded-lg">
+                                <source src="/test2.mp4" type="video/mp4" />
+                                Your browser does not support the video tag.
+                            </video>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <video autoPlay loop muted className="w-full h-full object-cover rounded-lg">
+                                <source src="/test1.mp4" type="video/mp4" />
+                                Your browser does not support the video tag.
+                            </video>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <video autoPlay loop muted className="w-full h-full object-cover rounded-lg">
+                                <source src="/test1.mp4" type="video/mp4" />
+                                Your browser does not support the video tag.
+                            </video>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <video autoPlay loop muted className="w-full h-full object-cover rounded-lg">
+                                <source src="/test1.mp4" type="video/mp4" />
+                                Your browser does not support the video tag.
+                            </video>
+                        </SwiperSlide>
+                        {/* 필요한 만큼 SwiperSlide 계속 추가 */}
+                    </Swiper>
+                </div>
                 끝입니다 😄
             </div>
         </div>

@@ -1,4 +1,5 @@
 // import React from "react";
+import { useState } from "react";
 
 const ResumeComponent = () => {
     const skills = [
@@ -7,6 +8,8 @@ const ResumeComponent = () => {
         { label: "Xd", level: "w-[65%]" },
         { label: "Dw", level: "w-[45%]" },
     ];
+    const [open1, setOpen1] = useState(false);
+    const [open2, setOpen2] = useState(false);
 
     return (
         <div className="grid grid-cols-1 md:grid-cols-5 min-h-screen text-sm font-sans
@@ -83,18 +86,76 @@ const ResumeComponent = () => {
 
                     <div className="space-y-4 text-gray-700 text-xs sm:text-sm max-w-72 mx-auto ">
                         <div className="items-start">
-                            <p className="font-semibold">2024.10 – 현재 | Emma Healthcare</p>
+                            <p className="font-semibold">2024.07 – 2024.08 | [서울시 뉴딜]<br/>
+                            모던 웹 풀스택 개발자 과정</p>
                             <ul className="list-disc list-outside pl-5 mt-1 space-y-1 text-gray-600 text-left">
-                                <li>React 기반 어드민 페이지 개발</li>
-                                <li>NestJS 백엔드와 연동한 대시보드 구축</li>
+                                <li>프론트앤드 개발 React, Node.js 심화</li>
+                                <li>UX/UI 기획 및 Figma 이해</li>
                             </ul>
                         </div>
                         <div className="items-start">
-                            <p className="font-semibold">2022.07 – 현재 | Emma Healthcare</p>
+                            <p className="font-semibold">
+                                2023.12 - 2024.06 | 코드랩 아카데미<br />
+                                AI 인공지능컨택센터(AICC) 웹서비스개발 과정
+                            </p>
+
                             <ul className="list-disc list-outside pl-5 mt-1 space-y-1 text-gray-600 text-left">
-                                <li>React 기반 어드민 페이지 개발</li>
-                                <li>NestJS 백엔드와 연동한 대시보드 구축</li>
+                                <li>프론트앤드 개발(html, css, javascript)</li>
+                                <li className="flex justify-between items-center">
+                                    GIT 버전관리, 활용
+                                    <button
+                                        className="text-sm text-blue-500 hover:underline ml-4"
+                                        onClick={() => setOpen1(!open1)}
+                                    >
+                                        {open1 ? "접기 ▲" : "더 보기 ▼"}
+                                    </button>
+                                </li>
+                                {open1 && (
+                                    <>
+                                        <li>Oracle, DBMS 설계 및 관리</li>
+                                        <li>DB 설치 및 기본 SQL 작성, React.js, Node.js 풀스택 개발</li>
+                                        <li>Python 데이터 분석</li>
+                                        <li>Linux 관점의 클라우드 기반 컨테이너 운영</li>
+                                        <li>머신러닝, 딥러닝 학습</li>
+                                        <li>AICC 웹기반 서비스 프로젝트</li>
+                                    </>
+                                )}
                             </ul>
+
+
+                        </div>
+
+                        {/* 두 번째 과정 */}
+                        <div className="items-start">
+                            <p className="font-semibold">
+                                2015.02 - 2015.08 | 한국소프트웨어교육원<br />
+                                Java OpenSource Framework 와 Hybrid App 전문가 양성 과정
+                            </p>
+
+                            <ul className="list-disc list-outside pl-5 mt-1 space-y-1 text-gray-600 text-left">
+                                <li>JAVA기반 개발환경 구축 및 활용</li>
+                                <li className="flex justify-between items-center">
+                                    웹UI설계 및 구현
+                                    <button
+                                        className="text-sm text-blue-500 hover:underline ml-4"
+                                        onClick={() => setOpen2(!open2)}
+                                    >
+                                        {open2 ? "접기 ▲" : "더 보기 ▼"}
+                                    </button>
+                                </li>
+                                {open2 && (
+                                    <>
+                                        <li>GIT 버전관리, 활용</li>
+                                        <li>DBMS설계 및 관리</li>
+                                        <li>JSP에서의 JDBC를 활용한 웹 서비스 구현</li>
+                                        <li>Spring Framework를 활용한 웹 서비스 설계 및 구현</li>
+                                        <li>데이터 베이스 및 테이블 설계</li>
+                                        <li>회원가입, 로그인, 게시판 구축 가능</li>
+                                    </>
+                                )}
+                            </ul>
+
+
                         </div>
 
                     </div>
