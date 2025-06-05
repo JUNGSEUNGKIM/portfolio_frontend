@@ -11,6 +11,10 @@ import RssFeedInReact from "@/pages/RssFeedInReact.tsx";
 import RssFeedViewer from "@/pages/RssFeedViewer.tsx";
 import AboutPage from "@/pages/AboutPage.tsx";
 // import Body from "@/components/Body.tsx";
+// @ts-ignore
+import 'swiper/css';
+// @ts-ignore
+import 'swiper/css/pagination';
 
 createRoot(document.getElementById('root')!).render(
     <BrowserRouter>
