@@ -12,56 +12,14 @@ const ResumeComponent = () => {
     const [open2, setOpen2] = useState(false);
 
     return (
-        <div className="grid grid-cols-1 md:grid-cols-5 min-h-screen text-sm font-sans
+        <div className="grid grid-cols-1 md:grid-cols-4 min-h-screen text-sm font-sans
                        rounded-2xl md:mx-8 mx-1
         ">
-            {/* Left Sidebar */}
-            <aside className=" text-black  flex flex-col items-center md:items-center">
-                <div className="text-black w-full md:w-auto md:h-full text-center md:text-center flex flex-col justify-between">
-                    {/* 상단 그라데이션 */}
-                    <div className="h-36 "/>
-                        {/*bg-gradient-to-b from-gray-800 via-gray-300 to-gray-100" />*!/*/}
-
-                    {/* 콘텐츠 내용 */}
-                    <div className=" items-center flex-grow">
-                        <div className="mb-16 flex justify-center">
-                            <img
-                                src="/profile.jpg"
-                                alt="profile"
-                                className="rounded-full w-28 h-28 object-cover border-2 border-white"
-                            />
-                        </div>
-
-                        <div className="text-4xl font-extrabold mb-3 w-full">JUNGSEUNG</div>
-                        <p className=" text-2xl font-extrabold">김정승</p>
-
-                        <div className="flex justify-center my-8">
-                            <div className="border-t-4 border-gray-500 w-10" />
-                        </div>
-
-                        <div className="space-y-4 mb-6">
-                            <p>010-5428-5284</p>
-                            <p>kimjs5284@daum.net</p>
-                        </div>
-
-
-                    </div>
-
-                    {/* 맨 아래 고정되는 영역 */}
-                    {/*<div className="px-6 py-4">*/}
-
-                    {/*    <p className="text-xs mt-2">2025 Portfolio</p>*/}
-                    {/*</div>*/}
-                </div>
-
-            </aside>
-
-            {/* Right Content */}
             <main className="md:col-span-4  text-gray-400 p-6 grid grid-cols-1 sm:grid-cols-2 gap-6 ">
                 <section className="items-center ">
                     <h2 className="font-bold border-b border-gray-300 mb-2">CAREER</h2>
 
-                    <div className="space-y-4 text-gray-700 text-xs sm:text-sm max-w-72 mx-auto ">
+                    <div className="space-y-4 text-gray-700 text-xs sm:text-sm max-w-96 mx-auto ">
                         <div className="items-start">
                             <p className="font-semibold">2024.10 – 현재 | Emma Healthcare</p>
                             <ul className="list-disc list-outside pl-5 mt-1 space-y-1 text-gray-600 text-left">
@@ -77,6 +35,13 @@ const ResumeComponent = () => {
                                 <li>개인 부가세신고, 세무기장, 세무조정, 세무신고</li>
                             </ul>
                         </div>
+                        <div className="items-start">
+                            <p className="font-semibold">2016.11 – 2018.09 | 사단법인 제주올레</p>
+                            <ul className="list-disc list-outside pl-5 mt-1 space-y-1 text-gray-600 text-left">
+                                <li>총무 및 물류업무</li>
+                                <li>인사, 세무기장, 물류</li>
+                            </ul>
+                        </div>
 
                     </div>
                 </section>
@@ -84,7 +49,7 @@ const ResumeComponent = () => {
                 <section className="items-center ">
                     <h2 className="font-bold border-b border-gray-300 mb-2">EDUCATION</h2>
 
-                    <div className="space-y-4 text-gray-700 text-xs sm:text-sm max-w-72 mx-auto ">
+                    <div className="space-y-4 text-gray-700 text-xs sm:text-sm max-w-96 mx-auto ">
                         <div className="items-start">
                             <p className="font-semibold">2024.07 – 2024.08 | [서울시 뉴딜]<br/>
                             모던 웹 풀스택 개발자 과정</p>
@@ -101,14 +66,16 @@ const ResumeComponent = () => {
 
                             <ul className="list-disc list-outside pl-5 mt-1 space-y-1 text-gray-600 text-left">
                                 <li>프론트앤드 개발(html, css, javascript)</li>
-                                <li className="flex justify-between items-center">
-                                    GIT 버전관리, 활용
-                                    <button
-                                        className="text-sm text-blue-500 hover:underline ml-4"
-                                        onClick={() => setOpen1(!open1)}
-                                    >
-                                        {open1 ? "접기 ▲" : "더 보기 ▼"}
-                                    </button>
+                                <li className="">
+                                    <div className="flex items-center">
+                                        GIT 버전관리, 활용
+                                        <button
+                                            className="text-sm text-blue-500 hover:underline ml-auto"
+                                            onClick={() => setOpen1(!open1)}
+                                        >
+                                            {open1 ? "접기 ▲" : "더 보기 ▼"}
+                                        </button>
+                                    </div>
                                 </li>
                                 {open1 && (
                                     <>
@@ -129,20 +96,23 @@ const ResumeComponent = () => {
                         <div className="items-start">
                             <p className="font-semibold">
                                 2015.02 - 2015.08 | 한국소프트웨어교육원<br />
-                                Java OpenSource Framework 와 Hybrid App 전문가 양성 과정
+                                Java OpenSource Framework 전문가 양성 과정
                             </p>
 
                             <ul className="list-disc list-outside pl-5 mt-1 space-y-1 text-gray-600 text-left">
                                 <li>JAVA기반 개발환경 구축 및 활용</li>
-                                <li className="flex justify-between items-center">
-                                    웹UI설계 및 구현
-                                    <button
-                                        className="text-sm text-blue-500 hover:underline ml-4"
-                                        onClick={() => setOpen2(!open2)}
-                                    >
-                                        {open2 ? "접기 ▲" : "더 보기 ▼"}
-                                    </button>
+                                <li className="">
+                                    <div className="flex items-center">
+                                        웹UI설계 및 구현
+                                        <button
+                                            className="text-sm text-blue-500 hover:underline ml-auto"
+                                            onClick={() => setOpen2(!open2)}
+                                        >
+                                            {open2 ? "접기 ▲" : "더 보기 ▼"}
+                                        </button>
+                                    </div>
                                 </li>
+
                                 {open2 && (
                                     <>
                                         <li>GIT 버전관리, 활용</li>
@@ -164,7 +134,7 @@ const ResumeComponent = () => {
                 <section className="items-center ">
                     <h2 className="font-bold border-b border-gray-300 mb-2">OTHER EXPERIENC</h2>
 
-                    <div className="space-y-4 text-gray-700 text-xs sm:text-sm max-w-72 mx-auto ">
+                    <div className="space-y-4 text-gray-700 text-xs sm:text-sm max-w-96 mx-auto ">
                         <div className="items-start">
                             <p className="font-semibold">2024.10 – 현재 | Emma Healthcare</p>
                             <ul className="list-disc list-outside pl-5 mt-1 space-y-1 text-gray-600 text-left">
@@ -186,7 +156,7 @@ const ResumeComponent = () => {
                 <section className="items-center ">
                     <h2 className="font-bold border-b border-gray-300 mb-2">AWARDS</h2>
 
-                    <div className="space-y-4 text-gray-700 text-sm max-w-72 mx-auto ">
+                    <div className="space-y-4 text-gray-700 text-sm max-w-96 mx-auto ">
                         <div className="items-start">
                             <p className="font-semibold">2024.10 – 현재 | Emma Healthcare</p>
                             <ul className="list-disc list-outside pl-5 mt-1 space-y-1 text-gray-600 text-left">
@@ -204,29 +174,7 @@ const ResumeComponent = () => {
 
                     </div>
                 </section>
-
-                {/*<section>*/}
-                {/*    <h2 className="font-bold border-b border-gray-300 mb-2">EDUCATION</h2>*/}
-                {/*    <p>2026.02 미타대학교 졸업</p>*/}
-                {/*    <p>2028.03 미타대 실내디자인학과 졸업</p>*/}
-                {/*    <p>2030.03 미타대 실내디자인 석사 과정 이수</p>*/}
-                {/*</section>*/}
-
-                {/*<section>*/}
-                {/*    <h2 className="font-bold border-b border-gray-300 mb-2">OTHER EXPERIENCE</h2>*/}
-                {/*    <p>2026.07 유기견 보호센터 봉사활동</p>*/}
-                {/*    <p>2027.08 어린이 재능기부 활동</p>*/}
-                {/*    <p>2026.04 실내디자인전 전시</p>*/}
-                {/*</section>*/}
-
-                {/*<section>*/}
-                {/*    <h2 className="font-bold border-b border-gray-300 mb-2">AWARDS</h2>*/}
-                {/*    <p>2027.11 실내건축 공모전 수상</p>*/}
-                {/*    <p>2028.08 공간디자인 공모전 수상</p>*/}
-                {/*    <p>2028.04 인터리어디자인 최우수상 수상</p>*/}
-                {/*</section>*/}
-
-                <section className="col-span-1 sm:col-span-2">
+                 <section className="col-span-1 sm:col-span-2">
                     <h2 className="font-bold border-b border-gray-300 mb-4">SKILL</h2>
                     <div className="space-y-4">
                         {skills.map((skill, index) => (
