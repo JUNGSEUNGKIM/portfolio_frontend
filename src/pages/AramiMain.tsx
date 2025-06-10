@@ -21,7 +21,7 @@ export default function AramiMain() {
                 >
                 {/*<SplitFace/>*/}
                 <MainBody/>
-                <ResumeComponent/>
+                {/*<ResumeComponent/>*/}
 
             </motion.div>
             {/*<motion.div*/}

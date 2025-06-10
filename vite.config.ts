@@ -12,7 +12,7 @@ export default defineConfig({
   plugins: [react(), tsconfigPaths()],
   server: {
     host: true,
-    port: 5173,
+    port: 5174,
     allowedHosts: ['test.arami.kr'],
     hmr: true,
   },
