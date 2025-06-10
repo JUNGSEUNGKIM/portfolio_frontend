@@ -5,7 +5,7 @@
 import PostPreview from "@/components/board/PostPreview"
 import { motion } from "framer-motion";
 import MainBody from "@/components/MainBody.tsx";
-import ResumeComponent from "@/components/ResumeComponent.tsx";
+// import ResumeComponent from "@/components/ResumeComponent.tsx";
 // import SplitFace from "@/components/SplitFace.tsx"
 
 export default function AramiMain() {
