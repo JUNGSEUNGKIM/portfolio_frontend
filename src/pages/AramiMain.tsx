@@ -46,7 +46,7 @@ export default function AramiMain() {
                 <div className="flex items-center justify-center w-full ">
                     <div className="w-full  flex items-center">
                         <div className="flex-grow border-t border-gray-300 mr-6 "></div>
-                        <span className="mx-4 text-xl font-semibold text-gray-500 ">Skills & Competencies</span>
+                        <span className="mx-4 text-xl font-semibold text-gray-500 ">Portfolio</span>
                         <div className="flex-grow border-t border-gray-300 ml-6 "></div>
                     </div>
                 </div>
