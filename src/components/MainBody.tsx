@@ -102,9 +102,9 @@ const MainBody = () => {
             </div>
 
             {/* 오른쪽: 전체 페이지 스크롤 담당 */}
-            <div className="w-full md:w-full px-6 py-10 space-y-32">
-                <div className="md:col-span-2  p-6 text-black">
-                    <div className="flex flex-col justify-start  items-center text-center px-6">
+            <div className="w-full md:w-full sm:px-6 py-10 space-y-32">
+                <div className="md:col-span-2  sm:p-6 text-black">
+                    <div className="flex flex-col justify-start  items-center text-center sm:px-6 px-2">
                         <div className="w-full h-[75vh]  items-center flex flex-col justify-center">
                             <h1 className="text-4xl sm:text-5xl font-extrabold mb-6">안녕하세요</h1>
                             <h2 className="text-xl sm:text-2xl font-semibold mb-2">
@@ -135,7 +135,7 @@ const MainBody = () => {
                                 <div className="flex-grow border-t border-gray-300 ml-6" />
                             </div>
                         </div>
-                        <div className="p-6 text-sm font-sans w-full text-gray-700">
+                        <div className="sm:p-6 text-sm font-sans w-full text-gray-700">
                             {/* 2단 레이아웃으로 나눌 부분 */}
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                                 {/* CAREER */}
