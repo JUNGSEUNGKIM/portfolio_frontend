@@ -4,7 +4,7 @@ WORKDIR /app
 
 # package.json과 lock 파일 복사
 COPY package*.json ./
-RUN npm install
+RUN npm install --legacy-peer-deps
 
 # 전체 코드 복사 및 빌드
 COPY . .
