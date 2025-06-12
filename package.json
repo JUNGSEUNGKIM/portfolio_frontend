@@ -10,6 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@tailwindcss/typography": "^0.5.16",
+    "@toast-ui/react-editor": "^3.2.3",
+    "axios": "^1.9.0",
     "framer-motion": "^12.9.2",
     "gsap": "^3.13.0",
     "path": "^0.12.7",

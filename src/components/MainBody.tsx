@@ -8,6 +8,9 @@ import {
     SiIntellijidea, SiDatagrip, SiPycharm, SiTypeorm,
 } from "react-icons/si";
 import {IconType} from "react-icons";
+import { motion } from "framer-motion";
+import PostPreview from "@/components/board/PostPreview.tsx";
+import {Swiper, SwiperSlide} from "swiper/react";
 
 const MainBody = () => {
     const skills = [
@@ -88,7 +91,7 @@ const MainBody = () => {
     return (
         <section className="flex flex-col md:flex-row w-full min-h-screen text-black">
             {/* 왼쪽 고정 공간 (레이아웃 차지만 함, 스크롤 안 함) */}
-            <div className="w-full md:w-1/4 w- border-b md:border-b-0 md:border-r bg-white">
+            <div className="w-full md:w-1/5 w- border-b md:border-b-0 md:border-r bg-white">
                 <div className="md:sticky md:top-0 md:h-screen flex flex-col items-center justify-center p-6">
                     <img src="/IMG_1051.jpeg" className="rounded-full w-40 h-40 object-cover mb-6" />
                     <h1 className="text-3xl font-bold">JUNGSEUNG</h1>
@@ -102,39 +105,140 @@ const MainBody = () => {
             </div>
 
             {/* 오른쪽: 전체 페이지 스크롤 담당 */}
-            <div className="w-full md:w-full sm:px-6 py-10 space-y-32">
+            <div className="w-full md:w-4/5 sm:px-6 py-10 space-y-32">
                 <div className="md:col-span-2  sm:p-6 text-black">
                     <div className="flex flex-col justify-start  items-center text-center sm:px-6 px-2">
-                        <div className="w-full h-[75vh]  items-center flex flex-col justify-center">
-                            <h1 className="text-4xl sm:text-5xl font-extrabold mb-6">안녕하세요</h1>
-                            <h2 className="text-xl sm:text-2xl font-semibold mb-2">
-                                백엔드 개발자를 희망하는 <span className="text-blue-600">김정승</span>입니다.
-                            </h2>
+                        <div className="w-full min-h-[75vh]  items-center flex flex-col justify-center">
+                            <div className="w-full flex flex-col justify-center items-center">
+                                <h1 className="text-4xl sm:text-5xl font-extrabold mb-6">안녕하세요</h1>
+                                <h2 className="text-xl sm:text-1xl font-semibold mb-2">
+                                    백엔드 개발자를 희망하는 <span className="text-blue-600">김정승</span>입니다.
+                                </h2>
 
-                            <p className="max-w-2xl mt-4 leading-relaxed text-gray-700">
-                                Java를 기반으로 JavaScript와 Python까지<br />
-                                다양한 언어로 백엔드를 설계하고 배포해왔습니다.
-                            </p>
-                            <p className="max-w-2xl mt-4 leading-relaxed text-gray-700">
-                                현재는 NestJS 기반의 서비스 백엔드를 구축하고 있으며,<br />
-                                SI 프로젝트에서는 Spring 기반 시스템의 고도화를 맡고 있습니다.
-                            </p>
-                            <p className="max-w-2xl mt-4 leading-relaxed text-gray-700">
-                                아직 부족한 점도 많지만, 성장하는 개발자가 되기 위해 매일 노력하고 있습니다.<br />
-                                저를 찾아주신다면, 기술 그 이상의 가치를 드릴 수 있도록 준비하겠습니다.
-                            </p>
+                                <p className="max-w-2xl mt-4 leading-relaxed text-gray-700 ">
+                                    Java를 기반으로 JavaScript와 Python까지<br/>
+                                    다양한 언어로 백엔드를 설계하고 배포해왔습니다.
+                                </p>
+                                <p className="max-w-2xl mt-4 leading-relaxed text-gray-700">
+                                    현재는 NestJS 기반의 서비스 백엔드를 구축하고 있으며,<br/>
+                                    SI 프로젝트에서는 Spring 기반 시스템의 고도화를 맡고 있습니다.
+                                </p>
+                                <p className="max-w-2xl mt-4 leading-relaxed text-gray-700">
+                                    아직 부족한 점도 많지만, 성장하는 개발자가 되기 위해 매일 노력하고 있습니다.<br/>
+                                    저를 찾아주신다면, 기술 그 이상의 가치를 드릴 수 있도록 준비하겠습니다.
+                                </p>
 
-                            <p className="mt-6 text-sm text-gray-500">감사합니다 :)</p>
-                        </div>
+                                <p className="mt-6 text-sm text-gray-500">감사합니다 :)</p>
 
-
-                        <div className="my-24 w-full">
-                            <div className="w-full flex items-center">
-                                <div className="flex-grow border-t border-gray-300 mr-6" />
-                                <span className="mx-4 text-xl font-semibold text-gray-500">Skills & Competencies</span>
-                                <div className="flex-grow border-t border-gray-300 ml-6" />
                             </div>
+                            <motion.div
+                                className="w-full block p-2 my-4"
+                                initial={{opacity: 0}}
+                                animate={{opacity: 1}}
+                                transition={{delay: 1.5, duration: 0.8}}
+                            >
+
+                                <div className="flex items-center justify-center w-full ">
+                                    <div className="w-full  flex items-center">
+                                        <div className="flex-grow border-t border-gray-300 mr-6 "></div>
+                                        <span className="mx-4 text-sm font-semibold text-gray-500 ">Portfolio</span>
+                                        <div className="flex-grow border-t border-gray-300 ml-6 "></div>
+                                    </div>
+                                </div>
+                            </motion.div>
+                            <motion.div
+                                className="w-full block p-2 my-4"
+                                initial={{opacity: 0}}
+                                animate={{opacity: 1}}
+                                transition={{delay: 1.5, duration: 0.8}}
+                            >
+                            <Swiper
+                                // spaceBetween={10}
+                                className="h-full w-full"
+                                slidesPerView={1.2}
+                                breakpoints={{
+                                    0: {
+                                        slidesPerView: 1.2, // 모바일: 1.2장
+                                    },
+                                    768: {
+                                        slidesPerView: 2.2, // 태블릿: 2.2장
+                                    },
+                                    1024: {
+                                        slidesPerView: 3.5, // 데스크탑: 3.5장
+                                    },
+                                }}
+                            >
+                                <SwiperSlide>
+                                    <PostPreview
+                                        image="/3.png"
+                                        title="My UI design book"
+                                        category="Book"
+                                        description="Quick and practical UI design guidelines to create intuitive and beautiful interfaces."
+                                    />
+                                </SwiperSlide>
+                                <SwiperSlide>
+                                    <PostPreview
+                                        image="/3.png"
+                                        title="Creating a lean design system"
+                                        category="Design system"
+                                        description="Comprehensive guidance on setting up a lean and efficient design system."
+                                    />
+                                </SwiperSlide>
+                                <SwiperSlide>
+                                    <PostPreview
+                                        image="/3.png"
+                                        title="Interior design news feed"
+                                        category="Side project"
+                                        description="Get the latest insights and articles on home design trends and practical tips."
+                                    />
+                                </SwiperSlide>
+                                <SwiperSlide>
+                                    <PostPreview
+                                        image="/3.png"
+                                        title="My UI design book"
+                                        category="Book"
+                                        description="Quick and practical UI design guidelines to create intuitive and beautiful interfaces."
+                                    />
+                                </SwiperSlide>
+                                <SwiperSlide>
+                                    <PostPreview
+                                        image="/3.png"
+                                        title="Creating a lean design system"
+                                        category="Design system"
+                                        description="Comprehensive guidance on setting up a lean and efficient design system."
+                                    />
+                                </SwiperSlide>
+                                <SwiperSlide>
+                                    <PostPreview
+                                        image="/3.png"
+                                        title="Interior design news feed"
+                                        category="Side project"
+                                        description="Get the latest insights and articles on home design trends and practical tips."
+                                    />
+                                </SwiperSlide>
+                            </Swiper>
+                            </motion.div>
+
                         </div>
+
+
+
+
+                        <motion.div
+                            className="w-full block p-2 my-4"
+                            initial={{opacity: 0}}
+                            animate={{opacity: 1}}
+                            transition={{delay: 1.5, duration: 0.8}}
+                        >
+
+                            <div className="flex items-center justify-center w-full ">
+                                <div className="w-full  flex items-center">
+                                    <div className="flex-grow border-t border-gray-300 mr-6 "></div>
+                                    <span className="mx-4 text-sm font-semibold text-gray-500 ">Skills & Competencies</span>
+                                    <div className="flex-grow border-t border-gray-300 ml-6 "></div>
+                                </div>
+                            </div>
+                        </motion.div>
                         <div className="sm:p-6 text-sm font-sans w-full text-gray-700">
                             {/* 2단 레이아웃으로 나눌 부분 */}
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -160,7 +264,7 @@ const MainBody = () => {
                                         </div>
                                         <div className="items-start">
                                             <p className="font-semibold sm:text-left">2016.11 – 2018.09 | 사단법인 제주올레</p>
-                                            <ul className="list-disc list-outside pl-5 mt-1 sm:ml-2 space-y-1 text-gray-600 text-left">
+                                            <ul className="list-disc list-outside pl-5 mt-1 sm:ml-2 space-y-1 text-gray-600 sm:text-left">
                                                 <li>총무 및 물류업무</li>
                                                 <li>인사, 세무기장, 물류</li>
                                             </ul>
@@ -176,7 +280,7 @@ const MainBody = () => {
                                         <div className="items-start">
                                             <p className="font-semibold sm:text-left">2024.07 – 2024.08 | [서울시 뉴딜] <br className="sm:hidden" />
                                                 모던 웹 풀스택 개발자 과정</p>
-                                            <ul className="list-disc list-outside pl-5 mt-1 sm:ml-2 space-y-1 text-gray-600 text-left">
+                                            <ul className="list-disc list-outside pl-5 mt-1 sm:ml-2 space-y-1 text-gray-600 sm:text-left">
                                                 <li>프론트앤드 개발 React, Node.js 심화</li>
                                                 <li>UX/UI 기획 및 Figma 이해</li>
                                             </ul>
@@ -187,13 +291,16 @@ const MainBody = () => {
                                                 AI 인공지능컨택센터(AICC) 웹서비스개발 과정
                                             </p>
 
-                                            <ul className="list-disc list-outside pl-5 mt-1 sm:ml-2 space-y-1 text-gray-600 text-left">
+                                            <ul className="list-disc list-outside pl-5 mt-1 sm:ml-2 space-y-1 text-gray-600 sm:text-left">
                                                 <li>프론트앤드 개발(html, css, javascript)</li>
-                                                <li className="">
-                                                    <div className="flex items-center">
-                                                        GIT 버전관리, 활용
+                                                <li>
+                                                    GIT 버전관리, 활용
+                                                    <div className="flex justify-between items-center">
+                                                        <p className="text-black text-center sm:text-left w-full">
+
+                                                        </p>
                                                         <button
-                                                            className="text-sm text-blue-500 hover:underline ml-auto sm:mr-28"
+                                                            className={`text-sm text-blue-500 hover:underline ml-2 w-20 sm:w-24 ${open1 ? "hidden" : ""}`}
                                                             onClick={() => setOpen1(!open1)}
                                                         >
                                                             {open1 ? "접기 ▲" : "더 보기 ▼"}
@@ -207,7 +314,19 @@ const MainBody = () => {
                                                         <li>Python 데이터 분석</li>
                                                         <li>Linux 관점의 클라우드 기반 컨테이너 운영</li>
                                                         <li>머신러닝, 딥러닝 학습</li>
-                                                        <li>AICC 웹기반 서비스 프로젝트</li>
+                                                        <li>AICC 웹기반 서비스 프로젝트
+                                                            <div className="flex justify-between items-center">
+                                                                <p className="text-black text-center sm:text-left w-full">
+
+                                                                </p>
+                                                                <button
+                                                                    className={`text-sm text-blue-500 hover:underline ml-2 w-20 sm:w-24 ${open1 ? "" : "hidden"}`}
+                                                                    onClick={() => setOpen1(!open1)}
+                                                                >
+                                                                    {open1 ? "접기 ▲" : "더 보기 ▼"}
+                                                                </button>
+                                                            </div>
+                                                        </li>
                                                     </>
                                                 )}
                                             </ul>
@@ -222,18 +341,22 @@ const MainBody = () => {
                                                 Java OpenSource Framework 전문가 양성 과정
                                             </p>
 
-                                            <ul className="list-disc list-outside pl-5 mt-1 sm:ml-2 space-y-1 text-gray-600 text-left">
+                                            <ul className="list-disc list-outside pl-5 mt-1 sm:ml-2 space-y-1 text-gray-600 sm:text-left">
                                                 <li>JAVA기반 개발환경 구축 및 활용</li>
                                                 <li className="">
-                                                    <div className="flex items-center">
+
                                                         웹UI설계 및 구현
-                                                        <button
-                                                            className="text-sm text-blue-500 hover:underline ml-auto sm:mr-28"
-                                                            onClick={() => setOpen2(!open2)}
-                                                        >
-                                                            {open2 ? "접기 ▲" : "더 보기 ▼"}
-                                                        </button>
-                                                    </div>
+                                                        <div className="flex justify-between items-center">
+                                                            <p className="text-black text-center sm:text-left w-full">
+
+                                                            </p>
+                                                            <button
+                                                                className={`text-sm text-blue-500 hover:underline ml-2 w-20 sm:w-24 ${open2 ? "hidden" : ""}`}
+                                                                onClick={() => setOpen2(!open2)}
+                                                            >
+                                                                {open1 ? "접기 ▲" : "더 보기 ▼"}
+                                                            </button>
+                                                        </div>
                                                 </li>
 
                                                 {open2 && (
@@ -243,7 +366,19 @@ const MainBody = () => {
                                                         <li>JSP에서의 JDBC를 활용한 웹 서비스 구현</li>
                                                         <li>Spring Framework를 활용한 웹 서비스 설계 및 구현</li>
                                                         <li>데이터 베이스 및 테이블 설계</li>
-                                                        <li>회원가입, 로그인, 게시판 구축 가능</li>
+                                                        <li>회원가입, 로그인, 게시판 구축 가능
+                                                            <div className="flex justify-between items-center">
+                                                                <p className="text-black text-center sm:text-left w-full">
+
+                                                                </p>
+                                                                <button
+                                                                    className={`text-sm text-blue-500 hover:underline ml-2 w-20 sm:w-24 ${open2 ? "" : "hidden"}`}
+                                                                    onClick={() => setOpen2(!open2)}
+                                                                >
+                                                                    {open1 ? "접기 ▲" : "더 보기 ▼"}
+                                                                </button>
+                                                            </div>
+                                                        </li>
                                                     </>
                                                 )}
                                             </ul>
