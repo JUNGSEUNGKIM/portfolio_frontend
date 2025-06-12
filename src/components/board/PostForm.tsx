@@ -76,42 +76,48 @@
 //         </div>
 //     );
 // }
-import React, { useRef, useState, useEffect } from 'react';
+import  { useRef, useState, useEffect } from 'react';
 import { Editor } from '@toast-ui/react-editor';
 import '@toast-ui/editor/dist/toastui-editor.css';
 
 export default function PostForm() {
-    const editorRef = useRef();
+    const editorRef = useRef<Editor | null>(null);
     const [modalOpen, setModalOpen] = useState(false);
-    const [previewData, setPreviewData] = useState({
-        title: '',
-        subtitle: '',
-        category: '',
-        content: '',
-        startDate: '',
-        endDate: '',
-        duration: '',
-        status: '',
-        image: null,
-    });
+    const [previewData, setPreviewData] = useState<{
+        title: string;
+        subtitle: string;
+        category: string;
+        startDate: string;
+        endDate: string;
+        content: string;
+        image: File | null;
+        status: string;
+        duration: string;
+    } | null>(null);
 
     useEffect(() => {
-        if (previewData.startDate && previewData.endDate) {
-            const start = new Date(previewData.startDate);
-            const end = new Date(previewData.endDate);
-            const diff = Math.ceil((end - start) / (1000 * 60 * 60 * 24)) + 1;
-            setPreviewData((prev) => ({ ...prev, duration: diff + '일' }));
-        }
-    }, [previewData.startDate, previewData.endDate]);
+        if (!previewData?.startDate || !previewData?.endDate) return;
+
+        const start = new Date(previewData.startDate);
+        const end = new Date(previewData.endDate);
+        const diff = Math.ceil((end.getTime() - start.getTime()) / (1000 * 60 * 60 * 24)) + 1;
+
+        setPreviewData((prev) => {
+            if (!prev) return prev;
+            return { ...prev, duration: diff + '일' };
+        });
+    }, [previewData?.startDate, previewData?.endDate]);
 
     const handleSubmit = () => {
-        const title = document.getElementById('title-input').value;
-        const subtitle = document.getElementById('subtitle-input').value;
-        const category = document.getElementById('category-select').value;
-        const startDate = document.getElementById('start-date').value;
-        const endDate = document.getElementById('end-date').value;
-        const image = document.getElementById('image-upload').files[0];
-        const content = editorRef.current.getInstance().getHTML();
+        const titleInput = document.getElementById('title-input') as HTMLInputElement | null;
+        const title = titleInput?.value || '';
+        const subtitle = (document.getElementById('subtitle-input') as HTMLInputElement).value;
+        const category = (document.getElementById('category-select') as HTMLSelectElement).value;
+        const startDate = (document.getElementById('start-date') as HTMLInputElement).value;
+        const endDate = (document.getElementById('end-date') as HTMLInputElement).value;
+        const image = (document.getElementById('image-upload') as HTMLInputElement).files![0];
+        const content = editorRef.current?.getInstance().getHTML(); // Toast UI Editor의 경우
+
 
         const status = endDate === '' ? '진행중' : '완료';
 
@@ -174,9 +180,8 @@ export default function PostForm() {
             >
                 등록 확인
             </button>
-
             {/* 미리보기 모달 */}
-            {modalOpen && (
+            {modalOpen && previewData && (
                 <div className="fixed inset-0 bg-black bg-opacity-50 flex overflow-y-scroll items-center justify-center z-50">
                     <div className="bg-white max-w-full w-full p-6 rounded shadow-lg space-y-4 relative">
                         <h2 className="text-xl font-bold">{previewData.title || '(제목 없음)'}</h2>
@@ -221,6 +226,7 @@ export default function PostForm() {
                     </div>
                 </div>
             )}
+
         </div>
     );
 }

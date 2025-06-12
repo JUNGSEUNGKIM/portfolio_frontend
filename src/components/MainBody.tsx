@@ -11,6 +11,7 @@ import {IconType} from "react-icons";
 import { motion } from "framer-motion";
 import PostPreview from "@/components/board/PostPreview.tsx";
 import {Swiper, SwiperSlide} from "swiper/react";
+import {FreeMode, Mousewheel} from "swiper/modules";
 
 const MainBody = () => {
     const skills = [
@@ -152,22 +153,18 @@ const MainBody = () => {
                                 animate={{opacity: 1}}
                                 transition={{delay: 1.5, duration: 0.8}}
                             >
-                            <Swiper
-                                // spaceBetween={10}
-                                className="h-full w-full"
-                                slidesPerView={1.2}
-                                breakpoints={{
-                                    0: {
-                                        slidesPerView: 1.2, // 모바일: 1.2장
-                                    },
-                                    768: {
-                                        slidesPerView: 2.2, // 태블릿: 2.2장
-                                    },
-                                    1024: {
-                                        slidesPerView: 3.5, // 데스크탑: 3.5장
-                                    },
-                                }}
-                            >
+                                <Swiper
+                                    modules={[Mousewheel, FreeMode]}  // ✅ 여기 꼭 있어야 해요!
+                                    mousewheel={{ releaseOnEdges: true }}
+                                    freeMode={true}
+                                    slidesPerView={1.2}
+                                    className="h-full w-full"
+                                    breakpoints={{
+                                        0: { slidesPerView: 1.2 },
+                                        768: { slidesPerView: 2.2 },
+                                        1024: { slidesPerView: 3.5 },
+                                    }}
+                                >
                                 <SwiperSlide>
                                     <PostPreview
                                         image="/3.png"
