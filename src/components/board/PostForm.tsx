@@ -128,7 +128,7 @@ export default function PostForm() {
             const formData = new FormData();
             formData.append('image', image);
             try {
-                const res = await axios.post('http://localhost:3000/image', formData);
+                const res = await axios.post('https://core.arami.kr/image', formData);
                 uploadedImageUrl = res.data.imageUrl;
                 setTitleImageUrl(uploadedImageUrl);
                 console.log(titleImageUrl);
@@ -159,17 +159,17 @@ export default function PostForm() {
 
         try {
             // const response =
-            await axios.post('http://localhost:3000/posts', {
+            await axios.post('https://core.arami.kr/posts', {
                 title: previewData.title,
                 subtitle: previewData.subtitle,
                 category: previewData.category,
-                startDate: previewData.startDate,
-                endDate: previewData.endDate,
+                start_date: previewData.startDate,
+                end_date: previewData.endDate,
                 content: previewData.content,
                 status: previewData.status,
                 duration: previewData.duration,
                 stacks: previewData.stacks,
-                imageUrl: previewData.imageUrl,
+                image_url: previewData.imageUrl,
             });
 
             alert('저장 성공! 🎉');
@@ -251,7 +251,7 @@ export default function PostForm() {
                         const formData = new FormData();
                         formData.append('image', blob);
                         try {
-                            const res = await axios.post('http://localhost:3000/image', formData);
+                            const res = await axios.post('https://core.arami.kr/image', formData);
                             callback(res.data.imageUrl, '이미지');
                         } catch (err) {
                             console.error('이미지 업로드 실패', err);

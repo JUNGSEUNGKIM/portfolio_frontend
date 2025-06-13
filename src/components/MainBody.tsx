@@ -12,6 +12,7 @@ import { motion } from "framer-motion";
 import PostPreview from "@/components/board/PostPreview.tsx";
 import {Swiper, SwiperSlide} from "swiper/react";
 import {FreeMode, Mousewheel} from "swiper/modules";
+import axios from "axios";
 
 const MainBody = () => {
     const skills = [
@@ -73,6 +74,21 @@ const MainBody = () => {
         Icon: IconType;
         label: string;
     };
+
+    const [posts, setPosts] = useState<any[]>([]);
+
+    useEffect(() => {
+        const fetchPosts = async () => {
+            try {
+                const res = await axios.get('https://core.arami.kr/posts');
+                setPosts(res.data);
+            } catch (err) {
+                console.error('게시글 불러오기 실패', err);
+            }
+        };
+
+        fetchPosts();
+    }, []);
 
     function Badge({ bg, color, Icon, label }: BadgeProps) {
         return (
@@ -154,7 +170,7 @@ const MainBody = () => {
                                 transition={{delay: 1.5, duration: 0.8}}
                             >
                                 <Swiper
-                                    modules={[Mousewheel, FreeMode]}  // ✅ 여기 꼭 있어야 해요!
+                                    modules={[Mousewheel, FreeMode]}
                                     mousewheel={{ releaseOnEdges: true }}
                                     freeMode={true}
                                     slidesPerView={1.2}
@@ -165,55 +181,26 @@ const MainBody = () => {
                                         1024: { slidesPerView: 3.5 },
                                     }}
                                 >
-                                <SwiperSlide>
-                                    <PostPreview
-                                        image="/3.png"
-                                        title="My UI design book"
-                                        category="Book"
-                                        description="Quick and practical UI design guidelines to create intuitive and beautiful interfaces."
-                                    />
-                                </SwiperSlide>
-                                <SwiperSlide>
-                                    <PostPreview
-                                        image="/3.png"
-                                        title="Creating a lean design system"
-                                        category="Design system"
-                                        description="Comprehensive guidance on setting up a lean and efficient design system."
-                                    />
-                                </SwiperSlide>
-                                <SwiperSlide>
-                                    <PostPreview
-                                        image="/3.png"
-                                        title="Interior design news feed"
-                                        category="Side project"
-                                        description="Get the latest insights and articles on home design trends and practical tips."
-                                    />
-                                </SwiperSlide>
-                                <SwiperSlide>
-                                    <PostPreview
-                                        image="/3.png"
-                                        title="My UI design book"
-                                        category="Book"
-                                        description="Quick and practical UI design guidelines to create intuitive and beautiful interfaces."
-                                    />
-                                </SwiperSlide>
-                                <SwiperSlide>
-                                    <PostPreview
-                                        image="/3.png"
-                                        title="Creating a lean design system"
-                                        category="Design system"
-                                        description="Comprehensive guidance on setting up a lean and efficient design system."
-                                    />
-                                </SwiperSlide>
-                                <SwiperSlide>
-                                    <PostPreview
-                                        image="/3.png"
-                                        title="Interior design news feed"
-                                        category="Side project"
-                                        description="Get the latest insights and articles on home design trends and practical tips."
-                                    />
-                                </SwiperSlide>
-                            </Swiper>
+                                    {posts.map((post) => (
+                                        <SwiperSlide key={post.id}>
+                                            <PostPreview
+                                                image={post.image_url || '/default.jpg'}
+                                                title={post.title}
+                                                category={post.category}
+                                                description={post.subtitle}
+                                            />
+                                        </SwiperSlide>
+                                    ))}
+                                    {/*<SwiperSlide>*/}
+                                    {/*    <PostPreview*/}
+                                    {/*        image="/3.png"*/}
+                                    {/*        title="Creating a lean design system"*/}
+                                    {/*        category="Design system"*/}
+                                    {/*        description="Comprehensive guidance on setting up a lean and efficient design system."*/}
+                                    {/*    />*/}
+                                    {/*</SwiperSlide>*/}
+
+                                </Swiper>
                             </motion.div>
 
                         </div>
