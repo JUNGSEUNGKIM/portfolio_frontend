@@ -76,13 +76,17 @@
 //         </div>
 //     );
 // }
-import  { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { Editor } from '@toast-ui/react-editor';
 import '@toast-ui/editor/dist/toastui-editor.css';
+import axios from 'axios';
 
 export default function PostForm() {
     const editorRef = useRef<Editor | null>(null);
     const [modalOpen, setModalOpen] = useState(false);
+    const [selectedStacks, setSelectedStacks] = useState<string[]>([]);
+    const [titleImageUrl, setTitleImageUrl] = useState<string | null>(null);
+
     const [previewData, setPreviewData] = useState<{
         title: string;
         subtitle: string;
@@ -93,11 +97,12 @@ export default function PostForm() {
         image: File | null;
         status: string;
         duration: string;
+        stacks: string[];
+        imageUrl: string | null;
     } | null>(null);
 
     useEffect(() => {
         if (!previewData?.startDate || !previewData?.endDate) return;
-
         const start = new Date(previewData.startDate);
         const end = new Date(previewData.endDate);
         const diff = Math.ceil((end.getTime() - start.getTime()) / (1000 * 60 * 60 * 24)) + 1;
@@ -108,44 +113,91 @@ export default function PostForm() {
         });
     }, [previewData?.startDate, previewData?.endDate]);
 
-    const handleSubmit = () => {
-        const titleInput = document.getElementById('title-input') as HTMLInputElement | null;
-        const title = titleInput?.value || '';
-        const subtitle = (document.getElementById('subtitle-input') as HTMLInputElement).value;
-        const category = (document.getElementById('category-select') as HTMLSelectElement).value;
-        const startDate = (document.getElementById('start-date') as HTMLInputElement).value;
-        const endDate = (document.getElementById('end-date') as HTMLInputElement).value;
-        const image = (document.getElementById('image-upload') as HTMLInputElement).files![0];
-        const content = editorRef.current?.getInstance().getHTML(); // Toast UI Editor의 경우
-
-
+    const handleSubmit = async () => {
+        const title = (document.getElementById('title-input') as HTMLInputElement)?.value || '';
+        const subtitle = (document.getElementById('subtitle-input') as HTMLInputElement)?.value || '';
+        const category = (document.getElementById('category-select') as HTMLSelectElement)?.value || '';
+        const startDate = (document.getElementById('start-date') as HTMLInputElement)?.value || '';
+        const endDate = (document.getElementById('end-date') as HTMLInputElement)?.value || '';
+        const image = (document.getElementById('image-upload') as HTMLInputElement)?.files?.[0] || null;
+        const content = editorRef.current?.getInstance().getHTML() || '';
         const status = endDate === '' ? '진행중' : '완료';
 
-        setPreviewData({ title, subtitle, category, startDate, endDate, content, image, status, duration: '' });
+        let uploadedImageUrl: string | null = null;
+        if (image) {
+            const formData = new FormData();
+            formData.append('image', image);
+            try {
+                const res = await axios.post('http://localhost:3000/image', formData);
+                uploadedImageUrl = res.data.imageUrl;
+                setTitleImageUrl(uploadedImageUrl);
+                console.log(titleImageUrl);
+            } catch (err) {
+                console.error('타이틀 이미지 업로드 실패', err);
+                alert('타이틀 이미지 업로드에 실패했습니다.');
+            }
+        }
+
+        setPreviewData({
+            title,
+            subtitle,
+            category,
+            startDate,
+            endDate,
+            content,
+            image,
+            status,
+            duration: '',
+            stacks: selectedStacks,
+            imageUrl: uploadedImageUrl,
+        });
         setModalOpen(true);
     };
+
+    const handleSaveToServer = async () => {
+        if (!previewData) return;
+
+        try {
+            // const response =
+            await axios.post('http://localhost:3000/posts', {
+                title: previewData.title,
+                subtitle: previewData.subtitle,
+                category: previewData.category,
+                startDate: previewData.startDate,
+                endDate: previewData.endDate,
+                content: previewData.content,
+                status: previewData.status,
+                duration: previewData.duration,
+                stacks: previewData.stacks,
+                imageUrl: previewData.imageUrl,
+            });
+
+            alert('저장 성공! 🎉');
+            setModalOpen(false);
+        } catch (error) {
+            console.error('저장 실패:', error);
+            alert('저장에 실패했습니다.');
+        }
+    };
+
+    const techList = [
+        'Java', 'TypeScript', 'JavaScript', 'Python',
+        'Spring Boot', 'NestJS', 'FastAPI', 'Node.js',
+        'React', 'Next.js', 'Flutter',
+        'Docker', 'GitHub Actions', 'Nginx', 'Ubuntu',
+        'Oracle', 'MySQL', 'PostgreSQL', 'TypeORM',
+        'OpenCV', 'MediaPipe', 'FFmpeg',
+        'IntelliJ', 'DataGrip', 'PyCharm'
+    ];
 
     return (
         <div className="max-w-3xl mx-auto p-6 space-y-6">
             <h1 className="text-2xl font-bold">📝 게시글 작성</h1>
-            <input
-                id="title-input"
-                type="text"
-                placeholder="제목을 입력하세요"
-                className="w-full p-2 border border-gray-300 rounded"
-            />
-            <textarea
-                id="subtitle-input"
-                placeholder="서브타이틀을 입력하세요 (10줄 내외)"
-                rows={4}
-                className="w-full p-2 border border-gray-300 rounded"
-            />
+            <input id="title-input" type="text" placeholder="제목을 입력하세요" className="w-full p-2 border border-gray-300 rounded" />
+            <textarea id="subtitle-input" placeholder="서브타이틀을 입력하세요 (10줄 내외)" rows={4} className="w-full p-2 border border-gray-300 rounded" />
             <div>
                 <label className="block text-sm font-medium mb-1">카테고리</label>
-                <select
-                    id="category-select"
-                    className="w-full p-2 border border-gray-300 rounded"
-                >
+                <select id="category-select" className="w-full p-2 border border-gray-300 rounded">
                     <option value="">카테고리를 선택하세요</option>
                     <option value="프로젝트">프로젝트</option>
                     <option value="사이드프로젝트">사이드프로젝트</option>
@@ -167,12 +219,46 @@ export default function PostForm() {
                 <label className="block text-sm font-medium mb-1">타이틀 이미지 업로드</label>
                 <input type="file" id="image-upload" accept="image/*" className="w-full" />
             </div>
+            <div>
+                <h2 className="font-semibold text-sm mb-2">사용한 기술 스택을 선택하세요</h2>
+                <div className="flex flex-wrap gap-2">
+                    {techList.map((tech) => (
+                        <label key={tech} className="flex items-center space-x-1 text-sm">
+                            <input
+                                type="checkbox"
+                                value={tech}
+                                checked={selectedStacks.includes(tech)}
+                                onChange={(e) => {
+                                    const checked = e.target.checked;
+                                    setSelectedStacks((prev) =>
+                                        checked ? [...prev, tech] : prev.filter((item) => item !== tech)
+                                    );
+                                }}
+                            />
+                            <span>{tech}</span>
+                        </label>
+                    ))}
+                </div>
+            </div>
             <Editor
                 ref={editorRef}
                 previewStyle="vertical"
                 height="400px"
                 initialEditType="wysiwyg"
                 useCommandShortcut={true}
+                hooks={{
+                    addImageBlobHook: async (blob: Blob, callback: (url: string, altText?: string) => void) => {
+                        const formData = new FormData();
+                        formData.append('image', blob);
+                        try {
+                            const res = await axios.post('http://localhost:3000/image', formData);
+                            callback(res.data.imageUrl, '이미지');
+                        } catch (err) {
+                            console.error('이미지 업로드 실패', err);
+                            alert('이미지 업로드에 실패했습니다.');
+                        }
+                    },
+                }}
             />
             <button
                 onClick={handleSubmit}
@@ -180,10 +266,10 @@ export default function PostForm() {
             >
                 등록 확인
             </button>
-            {/* 미리보기 모달 */}
+
             {modalOpen && previewData && (
                 <div className="fixed inset-0 bg-black bg-opacity-50 flex overflow-y-scroll items-center justify-center z-50">
-                    <div className="bg-white max-w-full w-full p-6 rounded shadow-lg space-y-4 relative">
+                    <div className="bg-white max-w-full w-full p-6 rounded shadow-lg space-y-4 relative pb-48">
                         <h2 className="text-xl font-bold">{previewData.title || '(제목 없음)'}</h2>
                         <p className="text-gray-700 whitespace-pre-line">{previewData.subtitle}</p>
                         <div className="text-sm text-gray-500">
@@ -192,33 +278,38 @@ export default function PostForm() {
                             <p>종료일: {previewData.endDate || '-'}</p>
                             <p>소요 기간: {previewData.duration || '-'}</p>
                             <p>진행 상태: {previewData.status}</p>
+                            <p>사용 기술: {previewData.stacks.join(', ')}</p>
                         </div>
-                        {previewData.image && (
-                            <div>
-                                <img
-                                    src={URL.createObjectURL(previewData.image)}
-                                    alt="타이틀 이미지"
-                                    className="w-full max-w-md rounded"
-                                />
-                            </div>
+                        {previewData.imageUrl && (
+                            <img src={previewData.imageUrl} alt="타이틀 이미지" className="w-full max-w-md rounded" />
                         )}
-                        <div
-                            className="prose max-w-full"
-                            dangerouslySetInnerHTML={{ __html: previewData.content }}
-                        />
+                        <div className="prose max-w-full" dangerouslySetInnerHTML={{ __html: previewData.content }} />
+
+
+                        <h2 className="text-xl font-bold">{previewData.title || '(제목 없음)'}</h2>
+                        <p className="text-gray-700 whitespace-pre-line">{previewData.subtitle}</p>
+                        <div className="text-sm text-gray-500">
+                            <p>카테고리: {previewData.category || '-'}</p>
+                            <p>시작일: {previewData.startDate || '-'}</p>
+                            <p>종료일: {previewData.endDate || '-'}</p>
+                            <p>소요 기간: {previewData.duration || '-'}</p>
+                            <p>진행 상태: {previewData.status}</p>
+                            <p>사용 기술: {previewData.stacks.join(', ')}</p>
+                        </div>
+                        {previewData.imageUrl && (
+                            <img src={previewData.imageUrl} alt="타이틀 이미지" className="w-full max-w-md rounded" />
+                        )}
                         <div className="flex justify-end gap-2">
-                            <button
-                                className="px-4 py-2 bg-gray-300 rounded"
-                                onClick={() => setModalOpen(false)}
-                            >
-                                닫기
-                            </button>
+                            <button className="px-4 py-2 bg-gray-300 rounded" onClick={() => setModalOpen(false)}>닫기</button>
+                            {/*<button className="px-4 py-2 bg-green-500 text-white rounded" onClick={() => {*/}
+                            {/*    alert('임시 저장 완료 (DB 저장은 아직)');*/}
+                            {/*    setModalOpen(false);*/}
+                            {/*}}>*/}
+                            {/*    임시저장*/}
+                            {/*</button>*/}
                             <button
                                 className="px-4 py-2 bg-green-500 text-white rounded"
-                                onClick={() => {
-                                    alert('임시 저장 완료 (DB 저장은 아직)');
-                                    setModalOpen(false);
-                                }}
+                                onClick={handleSaveToServer}
                             >
                                 저장하기
                             </button>
@@ -226,8 +317,8 @@ export default function PostForm() {
                     </div>
                 </div>
             )}
-
         </div>
     );
 }
+
 
