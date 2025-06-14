@@ -13,6 +13,8 @@ import PostPreview from "@/components/board/PostPreview.tsx";
 import {Swiper, SwiperSlide} from "swiper/react";
 import {FreeMode, Mousewheel} from "swiper/modules";
 import axios from "axios";
+import {API_BASE_URL} from "@/config.ts";
+import PostPreviewModal from "@/components/board/PostPreviewModal.tsx";
 
 const MainBody = () => {
     const skills = [
@@ -80,7 +82,8 @@ const MainBody = () => {
     useEffect(() => {
         const fetchPosts = async () => {
             try {
-                const res = await axios.get('https://core.arami.kr/posts');
+                const res = await axios.get(`${API_BASE_URL}/posts`);
+                console.log(res.data)
                 setPosts(res.data);
             } catch (err) {
                 console.error('게시글 불러오기 실패', err);
@@ -89,6 +92,14 @@ const MainBody = () => {
 
         fetchPosts();
     }, []);
+
+    const [modalOpen, setModalOpen] = useState(false);
+    const [previewData, setPreviewData] = useState<any | null>(null);
+
+    const handlePostClick = (post: any) => {
+        setPreviewData(post);
+        setModalOpen(true);
+    };
 
     function Badge({ bg, color, Icon, label }: BadgeProps) {
         return (
@@ -183,12 +194,14 @@ const MainBody = () => {
                                 >
                                     {posts.map((post) => (
                                         <SwiperSlide key={post.id}>
-                                            <PostPreview
-                                                image={post.image_url || '/default.jpg'}
-                                                title={post.title}
-                                                category={post.category}
-                                                description={post.subtitle}
-                                            />
+                                            <div onClick={() => handlePostClick(post)} className="cursor-pointer">
+                                                <PostPreview
+                                                    image={post.image_url || '/default.jpg'}
+                                                    title={post.title}
+                                                    category={post.category}
+                                                    description={post.subtitle}
+                                                />
+                                            </div>
                                         </SwiperSlide>
                                     ))}
                                     {/*<SwiperSlide>*/}
@@ -202,6 +215,18 @@ const MainBody = () => {
 
                                 </Swiper>
                             </motion.div>
+                            {modalOpen && previewData && (
+                                <PostPreviewModal
+                                    modalOpen={modalOpen}
+                                    previewData={previewData}
+                                    onClose={() => setModalOpen(false)}
+                                    onSave={() => {
+                                        // 저장 로직 or noop
+                                        console.log("Save button clicked");
+                                    }}
+                                    // onSave={handleSaveToServer}
+                                />
+                            )}
 
                         </div>
 

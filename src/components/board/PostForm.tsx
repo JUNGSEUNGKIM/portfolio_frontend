@@ -80,6 +80,8 @@ import { useRef, useState, useEffect } from 'react';
 import { Editor } from '@toast-ui/react-editor';
 import '@toast-ui/editor/dist/toastui-editor.css';
 import axios from 'axios';
+import {API_BASE_URL} from "@/config.ts";
+import PostPreviewModal from "@/components/board/PostPreviewModal.tsx";
 
 export default function PostForm() {
     const editorRef = useRef<Editor | null>(null);
@@ -91,44 +93,44 @@ export default function PostForm() {
         title: string;
         subtitle: string;
         category: string;
-        startDate: string;
-        endDate: string;
+        start_date: string;
+        end_date: string;
         content: string;
         image: File | null;
         status: string;
         duration: string;
         stacks: string[];
-        imageUrl: string | null;
+        image_url: string | null;
     } | null>(null);
 
     useEffect(() => {
-        if (!previewData?.startDate || !previewData?.endDate) return;
-        const start = new Date(previewData.startDate);
-        const end = new Date(previewData.endDate);
+        if (!previewData?.start_date || !previewData?.end_date) return;
+        const start = new Date(previewData.start_date);
+        const end = new Date(previewData.end_date);
         const diff = Math.ceil((end.getTime() - start.getTime()) / (1000 * 60 * 60 * 24)) + 1;
 
         setPreviewData((prev) => {
             if (!prev) return prev;
             return { ...prev, duration: diff + '일' };
         });
-    }, [previewData?.startDate, previewData?.endDate]);
+    }, [previewData?.start_date, previewData?.end_date]);
 
     const handleSubmit = async () => {
         const title = (document.getElementById('title-input') as HTMLInputElement)?.value || '';
         const subtitle = (document.getElementById('subtitle-input') as HTMLInputElement)?.value || '';
         const category = (document.getElementById('category-select') as HTMLSelectElement)?.value || '';
-        const startDate = (document.getElementById('start-date') as HTMLInputElement)?.value || '';
-        const endDate = (document.getElementById('end-date') as HTMLInputElement)?.value || '';
+        const start_date = (document.getElementById('start-date') as HTMLInputElement)?.value || '';
+        const end_date = (document.getElementById('end-date') as HTMLInputElement)?.value || '';
         const image = (document.getElementById('image-upload') as HTMLInputElement)?.files?.[0] || null;
         const content = editorRef.current?.getInstance().getHTML() || '';
-        const status = endDate === '' ? '진행중' : '완료';
+        const status = end_date === '' ? '진행중' : '완료';
 
         let uploadedImageUrl: string | null = null;
         if (image) {
             const formData = new FormData();
             formData.append('image', image);
             try {
-                const res = await axios.post('https://core.arami.kr/image', formData);
+                const res = await axios.post(`${API_BASE_URL}/image`, formData);
                 uploadedImageUrl = res.data.imageUrl;
                 setTitleImageUrl(uploadedImageUrl);
                 console.log(titleImageUrl);
@@ -142,14 +144,14 @@ export default function PostForm() {
             title,
             subtitle,
             category,
-            startDate,
-            endDate,
+            start_date,
+            end_date,
             content,
             image,
             status,
             duration: '',
             stacks: selectedStacks,
-            imageUrl: uploadedImageUrl,
+            image_url: uploadedImageUrl,
         });
         setModalOpen(true);
     };
@@ -159,17 +161,17 @@ export default function PostForm() {
 
         try {
             // const response =
-            await axios.post('https://core.arami.kr/posts', {
+            await axios.post(`${API_BASE_URL}/posts`, {
                 title: previewData.title,
                 subtitle: previewData.subtitle,
                 category: previewData.category,
-                start_date: previewData.startDate,
-                end_date: previewData.endDate,
+                start_date: previewData.start_date,
+                end_date: previewData.end_date,
                 content: previewData.content,
                 status: previewData.status,
                 duration: previewData.duration,
                 stacks: previewData.stacks,
-                image_url: previewData.imageUrl,
+                image_url: previewData.image_url,
             });
 
             alert('저장 성공! 🎉');
@@ -251,7 +253,7 @@ export default function PostForm() {
                         const formData = new FormData();
                         formData.append('image', blob);
                         try {
-                            const res = await axios.post('https://core.arami.kr/image', formData);
+                            const res = await axios.post(`${API_BASE_URL}/image`, formData);
                             callback(res.data.imageUrl, '이미지');
                         } catch (err) {
                             console.error('이미지 업로드 실패', err);
@@ -268,54 +270,12 @@ export default function PostForm() {
             </button>
 
             {modalOpen && previewData && (
-                <div className="fixed inset-0 bg-black bg-opacity-50 flex overflow-y-scroll items-center justify-center z-50">
-                    <div className="bg-white max-w-full w-full p-6 rounded shadow-lg space-y-4 relative pb-48">
-                        <h2 className="text-xl font-bold">{previewData.title || '(제목 없음)'}</h2>
-                        <p className="text-gray-700 whitespace-pre-line">{previewData.subtitle}</p>
-                        <div className="text-sm text-gray-500">
-                            <p>카테고리: {previewData.category || '-'}</p>
-                            <p>시작일: {previewData.startDate || '-'}</p>
-                            <p>종료일: {previewData.endDate || '-'}</p>
-                            <p>소요 기간: {previewData.duration || '-'}</p>
-                            <p>진행 상태: {previewData.status}</p>
-                            <p>사용 기술: {previewData.stacks.join(', ')}</p>
-                        </div>
-                        {previewData.imageUrl && (
-                            <img src={previewData.imageUrl} alt="타이틀 이미지" className="w-full max-w-md rounded" />
-                        )}
-                        <div className="prose max-w-full" dangerouslySetInnerHTML={{ __html: previewData.content }} />
-
-
-                        <h2 className="text-xl font-bold">{previewData.title || '(제목 없음)'}</h2>
-                        <p className="text-gray-700 whitespace-pre-line">{previewData.subtitle}</p>
-                        <div className="text-sm text-gray-500">
-                            <p>카테고리: {previewData.category || '-'}</p>
-                            <p>시작일: {previewData.startDate || '-'}</p>
-                            <p>종료일: {previewData.endDate || '-'}</p>
-                            <p>소요 기간: {previewData.duration || '-'}</p>
-                            <p>진행 상태: {previewData.status}</p>
-                            <p>사용 기술: {previewData.stacks.join(', ')}</p>
-                        </div>
-                        {previewData.imageUrl && (
-                            <img src={previewData.imageUrl} alt="타이틀 이미지" className="w-full max-w-md rounded" />
-                        )}
-                        <div className="flex justify-end gap-2">
-                            <button className="px-4 py-2 bg-gray-300 rounded" onClick={() => setModalOpen(false)}>닫기</button>
-                            {/*<button className="px-4 py-2 bg-green-500 text-white rounded" onClick={() => {*/}
-                            {/*    alert('임시 저장 완료 (DB 저장은 아직)');*/}
-                            {/*    setModalOpen(false);*/}
-                            {/*}}>*/}
-                            {/*    임시저장*/}
-                            {/*</button>*/}
-                            <button
-                                className="px-4 py-2 bg-green-500 text-white rounded"
-                                onClick={handleSaveToServer}
-                            >
-                                저장하기
-                            </button>
-                        </div>
-                    </div>
-                </div>
+                <PostPreviewModal
+                    modalOpen={modalOpen}
+                    previewData={previewData}
+                    onClose={() => setModalOpen(false)}
+                    onSave={handleSaveToServer}
+                />
             )}
         </div>
     );
