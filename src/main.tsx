@@ -16,6 +16,7 @@ import 'swiper/css';
 // @ts-ignore
 import 'swiper/css/pagination';
 import PostForm from "@/components/board/PostForm.tsx";
+import PostPage from "@/pages/PostPage.tsx";
 
 createRoot(document.getElementById('root')!).render(
     <BrowserRouter>
@@ -23,6 +24,7 @@ createRoot(document.getElementById('root')!).render(
             <Header />
             <main className="flex-1 ">
                 <Routes>
+                    <Route path="/posts/:id" element={<PostPage/>}/>
                     <Route path="/test" element={<PostForm/>}/>
                     <Route path="/" element={<AramiMain />} />
                     <Route path="/portfolio" element={<PortfolioBoard />} />

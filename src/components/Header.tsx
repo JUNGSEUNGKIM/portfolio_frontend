@@ -24,15 +24,15 @@ const Header: React.FC = () => {
                     <Link to="/about" className="hover:text-gray-400">about</Link>
                     <Link to="/learn" className="hover:text-gray-400">learn</Link>
                     <Link to="/portfolio" className="hover:text-gray-400">portfolio</Link>
-                    <Link to="/blog" className="hover:text-gray-400">blog</Link>
+                    {/*<Link to="/blog" className="hover:text-gray-400">blog</Link>*/}
                     <a href="#contact" className="hover:text-gray-400">contact</a>
                 </nav>
 
                 {/* Right: Social Icons (Desktop) */}
-                <div className="hidden md:flex space-x-6 text-3xl">
-                    <a href="https://twitter.com" target="_blank" rel="noreferrer" className="hover:text-blue-400"><i className="fab fa-twitter"></i></a>
+                <div className="hidden md:flex space-x-2 text-3xl w-16">
+                {/*    <a href="https://twitter.com" target="_blank" rel="noreferrer" className="hover:text-blue-400"><i className="fab fa-twitter"></i></a>*/}
                     <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="hover:text-blue-500"><i className="fab fa-linkedin"></i></a>
-                    <a href="https://facebook.com" target="_blank" rel="noreferrer" className="hover:text-blue-600"><i className="fab fa-facebook"></i></a>
+                {/*    <a href="https://facebook.com" target="_blank" rel="noreferrer" className="hover:text-blue-600"><i className="fab fa-facebook"></i></a>*/}
                     <a href="https://instagram.com" target="_blank" rel="noreferrer" className="hover:text-pink-400"><i className="fab fa-instagram"></i></a>
                 </div>
 

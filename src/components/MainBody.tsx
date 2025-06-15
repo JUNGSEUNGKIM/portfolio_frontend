@@ -15,6 +15,7 @@ import {FreeMode, Mousewheel} from "swiper/modules";
 import axios from "axios";
 import {API_BASE_URL} from "@/config.ts";
 import PostPreviewModal from "@/components/board/PostPreviewModal.tsx";
+import {useNavigate} from "react-router-dom";
 
 const MainBody = () => {
     const skills = [
@@ -92,13 +93,33 @@ const MainBody = () => {
 
         fetchPosts();
     }, []);
+    interface Post {
+        id: number;
+        title: string;
+        subtitle: string;
+        category: string;
+        image_url?: string;
+        start_date?: string;
+        end_date?: string;
+        duration?: string;
+        status?: string;
+        stacks: string[];
+        content: string;
+    }
+
 
     const [modalOpen, setModalOpen] = useState(false);
     const [previewData, setPreviewData] = useState<any | null>(null);
 
-    const handlePostClick = (post: any) => {
+    const handlePostClick = (post: Post) => {
         setPreviewData(post);
         setModalOpen(true);
+    };
+
+    const navigate = useNavigate();
+
+    const handlePostClickPage = (post: Post) => {
+        navigate(`/posts/${post.id}`);
     };
 
     function Badge({ bg, color, Icon, label }: BadgeProps) {
@@ -194,14 +215,22 @@ const MainBody = () => {
                                 >
                                     {posts.map((post) => (
                                         <SwiperSlide key={post.id}>
-                                            <div onClick={() => handlePostClick(post)} className="cursor-pointer">
-                                                <PostPreview
-                                                    image={post.image_url || '/default.jpg'}
-                                                    title={post.title}
-                                                    category={post.category}
-                                                    description={post.subtitle}
-                                                />
-                                            </div>
+                                            {/*<div onClick={() => handlePostClick(post)} className="cursor-pointer">*/}
+                                            {/*    <PostPreview*/}
+                                            {/*        image={post.image_url || '/default.jpg'}*/}
+                                            {/*        title={post.title}*/}
+                                            {/*        category={post.category}*/}
+                                            {/*        description={post.subtitle}*/}
+                                            {/*    />*/}
+                                            {/*</div>*/}
+                                                <div onClick={() => handlePostClickPage(post)} className="cursor-pointer">
+                                                    <PostPreview
+                                                        image={post.image_url || '/default.jpg'}
+                                                        title={post.title}
+                                                        category={post.category}
+                                                        description={post.subtitle}
+                                                    />
+                                                </div>
                                         </SwiperSlide>
                                     ))}
                                     {/*<SwiperSlide>*/}
@@ -222,6 +251,7 @@ const MainBody = () => {
                                     onClose={() => setModalOpen(false)}
                                     onSave={() => {
                                         // 저장 로직 or noop
+                                        handlePostClick(posts[0])
                                         console.log("Save button clicked");
                                     }}
                                     // onSave={handleSaveToServer}

@@ -23,7 +23,7 @@ function Footer() {
                     <a href="#about" className="hover:text-black">about</a>
                     <a href="#learn" className="hover:text-black">learn</a>
                     <a href="#portfolio" className="hover:text-black">portfolio</a>
-                    <a href="#blog" className="hover:text-black">blog</a>
+                    {/*<a href="#blog" className="hover:text-black">blog</a>*/}
                     <a href="#contact" className="hover:text-black">contact</a>
                 </nav>
             </div>
