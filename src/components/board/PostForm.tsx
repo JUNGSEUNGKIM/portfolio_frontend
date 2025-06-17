@@ -104,7 +104,7 @@ export default function PostForm() {
     } | null>(null);
 
     useEffect(() => {
-        if (!previewData?.start_date || !previewData?.end_date) return;
+        if (!previewData?.start_date ) return;
         const start = new Date(previewData.start_date);
         const end = new Date(previewData.end_date);
         const diff = Math.ceil((end.getTime() - start.getTime()) / (1000 * 60 * 60 * 24)) + 1;
@@ -154,6 +154,8 @@ export default function PostForm() {
             image_url: uploadedImageUrl,
         });
         setModalOpen(true);
+        console.log(modalOpen)
+        console.log(previewData)
     };
 
     const handleSaveToServer = async () => {
@@ -189,7 +191,7 @@ export default function PostForm() {
         'Docker', 'GitHub Actions', 'Nginx', 'Ubuntu',
         'Oracle', 'MySQL', 'PostgreSQL', 'TypeORM',
         'OpenCV', 'MediaPipe', 'FFmpeg',
-        'IntelliJ', 'DataGrip', 'PyCharm'
+        'IntelliJ', 'DataGrip', 'PyCharm', 'EJS', 'jQuery',
     ];
 
     return (

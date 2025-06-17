@@ -4,7 +4,7 @@ import {
 import {
     SiTypescript, SiJavascript, SiSpring, SiNestjs, SiFastapi, SiNextdotjs, SiFlutter,
     SiMysql, SiPostgresql, SiOracle, SiGithubactions, SiNginx, SiUbuntu, SiOpencv, SiGoogle, SiFfmpeg,
-    SiIntellijidea, SiDatagrip, SiPycharm, SiTypeorm,
+    SiIntellijidea, SiDatagrip, SiPycharm, SiTypeorm, SiEjs, SiJquery
 } from "react-icons/si";
 import { IconType } from "react-icons";
 
@@ -29,6 +29,9 @@ export const techMap: Record<string, TechMeta> = {
     "React": { bg: "bg-[#61DAFB]", color: "text-black", Icon: FaReact, category: "Frontend" },
     "Next.js": { bg: "bg-[#000000]", color: "text-white", Icon: SiNextdotjs, category: "Frontend" },
     "Flutter": { bg: "bg-[#02569B]", color: "text-white", Icon: SiFlutter, category: "Frontend" },
+    "EJS": { bg: "bg-[#A91E50]", color: "text-white", Icon: SiEjs, category: "Frontend" },
+    "jQuery": { bg: "bg-[#0769AD]", color: "text-white", Icon: SiJquery, category: "Frontend" },
+
 
     "Docker": { bg: "bg-[#2496ED]", color: "text-white", Icon: FaDocker, category: "DevOps" },
     "GitHub Actions": { bg: "bg-[#2088FF]", color: "text-white", Icon: SiGithubactions, category: "DevOps" },

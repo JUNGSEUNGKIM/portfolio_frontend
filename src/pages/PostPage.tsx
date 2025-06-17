@@ -30,10 +30,24 @@ const PostPage = () => {
 
     if (!previewData) return <div className="p-10 text-center">Loading...</div>;
 
-    if (!previewData.start_date || !previewData.end_date) return null;
+    if (!previewData.start_date ) return null;
     const start = new Date(previewData.start_date);
-    const end = new Date(previewData.end_date);
-    const diff = Math.ceil((end.getTime() - start.getTime()) / (1000 * 60 * 60 * 24)) + 1;
+    // const end = new Date(previewData.end_date);
+    // const end = previewData.end_date ? new Date(previewData.end_date) : null;
+    // if (previewData.end_date) {
+    //     end = new Date(previewData.end_date);
+    // }
+    // const diff = Math.ceil((end.getTime() - start.getTime()) / (1000 * 60 * 60 * 24)) + 1;
+    let end: Date | null = null;
+
+    if (previewData.end_date) {
+        end = new Date(previewData.end_date);
+    }
+
+// end가 null이 아닌 경우에만 diff 계산
+    const diff = end
+        ? Math.ceil((end.getTime() - start.getTime()) / (1000 * 60 * 60 * 24)) + 1
+        : null;
 
     return (
         // <div className="bg-white w-11/12 max-w-6xl mx-auto mt-12 rounded-2xl shadow-2xl overflow-y-auto max-h-[90vh] p-6">

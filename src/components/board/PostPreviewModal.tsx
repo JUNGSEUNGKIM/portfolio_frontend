@@ -5,7 +5,7 @@ interface PreviewData {
     subtitle?: string;
     category?: string;
     start_date?: string;
-    end_date?: string;
+    end_date?: string | null;
     duration?: string;
     status?: string;
     stacks: string[];
@@ -22,13 +22,32 @@ interface PostPreviewModalProps {
 
 
 const PostPreviewModal: React.FC<PostPreviewModalProps> = ({ modalOpen, previewData, onClose, onSave }) => {
+    console.log(modalOpen)
+    console.log(previewData)
+    console.log(onClose)
+    console.log(onSave)
     if (!modalOpen || !previewData) return null;
+
     console.log(previewData.stacks)
 
-    if (!previewData?.start_date || !previewData?.end_date) return;
+    if (!previewData?.start_date ) return;
     const start = new Date(previewData.start_date);
-    const end = new Date(previewData.end_date);
-    const diff = Math.ceil((end.getTime() - start.getTime()) / (1000 * 60 * 60 * 24)) + 1;
+    // if (previewData.end_date === "") {
+    //     previewData.end_date = null;
+    // }
+    // // const end = new Date(previewData.end_date);
+    // const end = previewData.end_date ? new Date(previewData.end_date) : null;
+    // const diff = Math.ceil((end.getTime() - start.getTime()) / (1000 * 60 * 60 * 24)) + 1;
+    let end: Date | null = null;
+
+    if (previewData.end_date) {
+        end = new Date(previewData.end_date);
+    }
+
+// end가 null이 아닌 경우에만 diff 계산
+    const diff = end
+        ? Math.ceil((end.getTime() - start.getTime()) / (1000 * 60 * 60 * 24)) + 1
+        : null;
     return (
         <div className="fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm flex items-center justify-center z-50">
             <div className="bg-white w-11/12 max-w-6xl rounded-2xl shadow-2xl relative overflow-y-auto max-h-[90vh]">
