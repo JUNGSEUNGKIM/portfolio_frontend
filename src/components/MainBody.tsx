@@ -1,11 +1,12 @@
 import {useEffect, useRef, useState} from "react";
 import {
-    FaJava, FaPython, FaReact, FaDocker, FaNodeJs,
+    FaJava, FaPython, FaReact, FaDocker, FaNodeJs, FaHtml5, FaCss3Alt,
 } from "react-icons/fa";
 import {
-    SiTypescript, SiJavascript, SiSpring, SiNestjs, SiFastapi, SiNextdotjs, SiFlutter,
+    SiTypescript, SiJavascript, SiSpring, SiNestjs, SiFastapi,  SiFlutter,
     SiMysql, SiPostgresql, SiOracle, SiGithubactions, SiNginx, SiUbuntu, SiOpencv, SiGoogle, SiFfmpeg,
     SiIntellijidea, SiDatagrip, SiPycharm, SiTypeorm,
+    // SiEjs,SiNextdotjs,
 } from "react-icons/si";
 import {IconType} from "react-icons";
 import { motion } from "framer-motion";
@@ -459,8 +460,9 @@ const MainBody = () => {
                                         <div className="flex flex-wrap gap-3">
                                             <h3 className="font-semibold text-sm text-gray-700 w-24">Frontend</h3>
                                             <div className="flex flex-wrap gap-3">
+                                                <Badge bg="bg-[#E34F26]" color="text-white" Icon={FaHtml5} label="HTML" />
+                                                <Badge bg="bg-[#1572B6]" color="text-white" Icon={FaCss3Alt} label="CSS" />
                                                 <Badge bg="bg-[#61DAFB]" color="text-black" Icon={FaReact} label="React" />
-                                                <Badge bg="bg-[#000000]" color="text-white" Icon={SiNextdotjs} label="Next.js" />
                                                 <Badge bg="bg-[#02569B]" color="text-white" Icon={SiFlutter} label="Flutter" />
                                             </div>
                                         </div>

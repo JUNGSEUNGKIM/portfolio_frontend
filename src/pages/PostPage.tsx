@@ -67,7 +67,7 @@ const PostPage = () => {
                             initial={{ x: -100, opacity: 0 }}
                             animate={{ x: 0, opacity: 1 }}
                             transition={{delay: 0.7,  duration: 0.6 }}
-                            className="flex flex-col justify-between pr-12"
+                            className="flex flex-col justify-between sm:pr-12 p-2"
                         >
                             <div className="flex flex-col justify-center flex-grow">
                                 <h1 className="text-3xl font-extrabold text-center mb-6 text-gray-900">
@@ -75,7 +75,7 @@ const PostPage = () => {
                                 </h1>
 
                                 <div className="text-sm text-gray-600 mb-2">
-                                    <div className="flex justify-between mb-1">
+                                    <div className="sm:flex sm:justify-between mb-1">
                                         <p>📂 <b>카테고리:</b> {previewData.category || '-'}</p>
                                         <div className="flex gap-x-2">
                                             <p>📅 {previewData.start_date}</p>
@@ -83,7 +83,7 @@ const PostPage = () => {
                                             <p>{previewData.end_date}</p>
                                         </div>
                                     </div>
-                                    <div className="flex justify-end gap-x-4">
+                                    <div className="flex sm:justify-end gap-x-4">
                                         <p><b>소요 기간:</b> {diff} 일</p>
                                         <p><b>진행 상태:</b> {previewData.status || '-'}</p>
                                     </div>

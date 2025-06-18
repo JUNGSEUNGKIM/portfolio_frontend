@@ -51,8 +51,8 @@ const Header: React.FC = () => {
                     <Link to="/about" onClick={() => setMenuOpen(!menuOpen)} className="block hover:text-gray-400">about</Link>
                     <Link to="/learn" onClick={() => setMenuOpen(!menuOpen)} className="block hover:text-gray-400">learn</Link>
                     <Link to="/portfolio" onClick={() => setMenuOpen(!menuOpen)} className="block hover:text-gray-400">portfolio</Link>
-                    <Link to="/blog" onClick={() => setMenuOpen(!menuOpen)} className="block hover:text-gray-400">blog</Link>
-                    <Link to="#contact" onClick={() => setMenuOpen(!menuOpen)} className="block hover:text-gray-400">contact</Link>
+                    {/*<Link to="/blog" onClick={() => setMenuOpen(!menuOpen)} className="block hover:text-gray-400">blog</Link>*/}
+                    <Link to="#contact172.3" onClick={() => setMenuOpen(!menuOpen)} className="block hover:text-gray-400">contact</Link>
                 </div>
             )}
         </motion.div>
