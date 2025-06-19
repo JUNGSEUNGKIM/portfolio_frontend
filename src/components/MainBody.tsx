@@ -289,7 +289,7 @@ const MainBody = () => {
                                     <div className="space-y-4 text-gray-700 text-xs sm:text-sm max-w-full mx-auto ">
                                         <div className="items-start ">
                                             <p className="font-semibold sm:text-left"> 2024.10 – 현재 | Emma Healthcare</p>
-                                            <ul className="list-disc list-outside pl-5 mt-1 sm:ml-2 space-y-1 text-gray-600 sm:text-left">
+                                            <ul className="sm:list-disc list-outside pl-5 mt-1 sm:ml-2 space-y-1 text-gray-600 sm:text-left">
                                                 <li>RSpring Boot, NestJS, Python을 활용한 REST API 개발</li>
                                                 <li>서버 성능 최적화 및 배포</li>
                                                 <li>JavaScript 기반 MediaPipe, OpenCV 활용 영상/이미지 처리</li>
@@ -297,14 +297,14 @@ const MainBody = () => {
                                         </div>
                                         <div className="items-start">
                                             <p className="font-semibold sm:text-left">2018.09 – 2023.09 | 진성회계법인제주지점</p>
-                                            <ul className="list-disc list-outside pl-5 mt-1 sm:ml-2 space-y-1 text-gray-600 sm:text-left">
+                                            <ul className="sm:list-disc list-outside pl-5 mt-1 sm:ml-2 space-y-1 text-gray-600 sm:text-left">
                                                 <li>법인 세무 조정 및 신고</li>
                                                 <li>개인 부가세신고, 세무기장, 세무조정, 세무신고</li>
                                             </ul>
                                         </div>
                                         <div className="items-start">
                                             <p className="font-semibold sm:text-left">2016.11 – 2018.09 | 사단법인 제주올레</p>
-                                            <ul className="list-disc list-outside pl-5 mt-1 sm:ml-2 space-y-1 text-gray-600 sm:text-left">
+                                            <ul className="sm:list-disc list-outside pl-5 mt-1 sm:ml-2 space-y-1 text-gray-600 sm:text-left">
                                                 <li>총무 및 물류업무</li>
                                                 <li>인사, 세무기장, 물류</li>
                                             </ul>
@@ -320,7 +320,7 @@ const MainBody = () => {
                                         <div className="items-start">
                                             <p className="font-semibold sm:text-left">2024.07 – 2024.08 | [서울시 뉴딜] <br className="sm:hidden" />
                                                 모던 웹 풀스택 개발자 과정</p>
-                                            <ul className="list-disc list-outside pl-5 mt-1 sm:ml-2 space-y-1 text-gray-600 sm:text-left">
+                                            <ul className="sm:list-disc list-outside pl-5 mt-1 sm:ml-2 space-y-1 text-gray-600 sm:text-left">
                                                 <li>프론트앤드 개발 React, Node.js 심화</li>
                                                 <li>UX/UI 기획 및 Figma 이해</li>
                                             </ul>
@@ -331,7 +331,7 @@ const MainBody = () => {
                                                 AI 인공지능컨택센터(AICC) 웹서비스개발 과정
                                             </p>
 
-                                            <ul className="list-disc list-outside pl-5 mt-1 sm:ml-2 space-y-1 text-gray-600 sm:text-left">
+                                            <ul className="sm:list-disc list-outside pl-5 mt-1 sm:ml-2 space-y-1 text-gray-600 sm:text-left">
                                                 <li>프론트앤드 개발(html, css, javascript)</li>
                                                 <li>
                                                     GIT 버전관리, 활용
@@ -381,7 +381,7 @@ const MainBody = () => {
                                                 Java OpenSource Framework 전문가 양성 과정
                                             </p>
 
-                                            <ul className="list-disc list-outside pl-5 mt-1 sm:ml-2 space-y-1 text-gray-600 sm:text-left">
+                                            <ul className="sm:list-disc list-outside pl-5 mt-1 sm:ml-2 space-y-1 text-gray-600 sm:text-left">
                                                 <li>JAVA기반 개발환경 구축 및 활용</li>
                                                 <li className="">
 
