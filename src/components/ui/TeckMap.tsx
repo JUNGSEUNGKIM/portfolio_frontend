@@ -1,5 +1,5 @@
 import {
-    FaJava, FaPython, FaReact, FaDocker, FaNodeJs,
+    FaJava, FaPython, FaReact, FaDocker, FaNodeJs, FaHtml5, FaCss3Alt,
 } from "react-icons/fa";
 import {
     SiTypescript, SiJavascript, SiSpring, SiNestjs, SiFastapi, SiNextdotjs, SiFlutter,
@@ -50,4 +50,8 @@ export const techMap: Record<string, TechMeta> = {
     "IntelliJ": { bg: "bg-[#000000]", color: "text-white", Icon: SiIntellijidea, category: "Tools" },
     "DataGrip": { bg: "bg-[#21D789]", color: "text-black", Icon: SiDatagrip, category: "Tools" },
     "PyCharm": { bg: "bg-[#3776AB]", color: "text-white", Icon: SiPycharm, category: "Tools" },
+
+    "HTML": { bg: "bg-[#E34F26]", color: "text-white", Icon: FaHtml5, category: "Frontend" },
+    "CSS": { bg: "bg-[#1572B6]", color: "text-white", Icon: FaCss3Alt, category: "Frontend" },
+
 };

@@ -17,6 +17,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import PostForm from "@/components/board/PostForm.tsx";
 import PostPage from "@/pages/PostPage.tsx";
+import ContactForm from "@/pages/ContactForm.tsx";
 
 createRoot(document.getElementById('root')!).render(
     <BrowserRouter>
@@ -31,6 +32,8 @@ createRoot(document.getElementById('root')!).render(
                     <Route path="/blog" element={<RssFeedInReact />} />
                     <Route path="/learn" element={<RssFeedViewer />} />
                     <Route path="/about" element={<AboutPage />} />
+                    <Route path="/contact" element={<ContactForm />} />
+
                 </Routes>
             </main>
             <Footer />

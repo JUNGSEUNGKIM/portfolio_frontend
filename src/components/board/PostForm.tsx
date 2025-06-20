@@ -191,7 +191,7 @@ export default function PostForm() {
         'Docker', 'GitHub Actions', 'Nginx', 'Ubuntu',
         'Oracle', 'MySQL', 'PostgreSQL', 'TypeORM',
         'OpenCV', 'MediaPipe', 'FFmpeg',
-        'IntelliJ', 'DataGrip', 'PyCharm', 'EJS', 'jQuery',
+        'IntelliJ', 'DataGrip', 'PyCharm', 'EJS', 'jQuery', 'HTML', 'CSS'
     ];
 
     return (

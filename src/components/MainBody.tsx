@@ -159,27 +159,30 @@ const MainBody = () => {
                 <div className="md:col-span-2  sm:p-6 text-black">
                     <div className="flex flex-col justify-start  items-center text-center sm:px-6 px-2">
                         <div className="w-full min-h-[75vh]  items-center flex flex-col justify-center">
-                            <div className="w-full flex flex-col justify-center items-center">
-                                <h1 className="text-4xl sm:text-5xl font-extrabold mb-6">안녕하세요</h1>
-                                <h2 className="text-xl sm:text-1xl font-semibold mb-2">
-                                    백엔드 개발자를 희망하는 <span className="text-blue-600">김정승</span>입니다.
-                                </h2>
+                            <div className="w-full flex flex-col items-center justify-center py-16 mb-12 text-center">
+                                <motion.h1
+                                    initial={{ opacity: 0, scale: 0.9 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    transition={{delay:0.5, duration: 1 }}
+                                    className="text-[8rem] md:text-[10rem] font-extrabold text-gray-300 leading-none"
+                                >
+                                    <span className="px-6 py-2 rounded">Back-End</span>
+                                </motion.h1>
 
-                                <p className="max-w-2xl mt-4 leading-relaxed text-gray-700 ">
-                                    Java를 기반으로 JavaScript와 Python까지<br/>
-                                    다양한 언어로 백엔드를 설계하고 배포해왔습니다.
-                                </p>
-                                <p className="max-w-2xl mt-4 leading-relaxed text-gray-700">
-                                    현재는 NestJS 기반의 서비스 백엔드를 구축하고 있으며,<br/>
-                                    SI 프로젝트에서는 Spring 기반 시스템의 고도화를 맡고 있습니다.
-                                </p>
-                                <p className="max-w-2xl mt-4 leading-relaxed text-gray-700">
-                                    아직 부족한 점도 많지만, 성장하는 개발자가 되기 위해 매일 노력하고 있습니다.<br/>
-                                    저를 찾아주신다면, 기술 그 이상의 가치를 드릴 수 있도록 준비하겠습니다.
-                                </p>
-
-                                <p className="mt-6 text-sm text-gray-500">감사합니다 :)</p>
-
+                                <motion.h1
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ delay: 1.0, duration: 1 }}
+                                    className="-mt-6 md:-mt-10"
+                                >
+                                    <p className="text-xl md:text-5xl text-gray-700 tracking-wider">
+                                        백엔드 개발자 <span className="text-black font-bold tracking-widest">김정승</span>입니다.
+                                    </p>
+                                    <p className="mt-12 text-md md:text-lg text-gray-600 leading-relaxed">
+                                        동료와의 협업에서는 <span className="font-bold px-1">역지사지</span>의 마음으로,<br />
+                                        업무에서는 <span className="font-bold px-1">책임감 있는</span> 개발 자세로 임합니다.
+                                    </p>
+                                </motion.h1>
                             </div>
                             <motion.div
                                 className="w-full block p-2 my-4"
@@ -197,7 +200,7 @@ const MainBody = () => {
                                 </div>
                             </motion.div>
                             <motion.div
-                                className="w-full block p-2 my-4"
+                                className="w-full block p-2 my-4 hover:!cursor-ew-resize"
                                 initial={{opacity: 0}}
                                 animate={{opacity: 1}}
                                 transition={{delay: 1.5, duration: 0.8}}
