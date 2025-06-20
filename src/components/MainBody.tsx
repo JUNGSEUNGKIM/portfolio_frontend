@@ -159,12 +159,12 @@ const MainBody = () => {
                 <div className="md:col-span-2  sm:p-6 text-black">
                     <div className="flex flex-col justify-start  items-center text-center sm:px-6 px-2">
                         <div className="w-full min-h-[75vh]  items-center flex flex-col justify-center">
-                            <div className="w-full flex flex-col items-center justify-center py-16 mb-12 text-center">
+                            <div className="w-full flex flex-col items-center justify-center sm:py-16 mb-4 sm:mb-12 sm:min-h-[50vh] text-center">
                                 <motion.h1
                                     initial={{ opacity: 0, scale: 0.9 }}
                                     animate={{ opacity: 1, scale: 1 }}
                                     transition={{delay:0.5, duration: 1 }}
-                                    className="text-[8rem] md:text-[10rem] font-extrabold text-gray-300 leading-none"
+                                    className="text-[4.2rem] md:text-[10rem] font-extrabold text-gray-300 leading-none"
                                 >
                                     <span className="px-6 py-2 rounded">Back-End</span>
                                 </motion.h1>
@@ -175,7 +175,7 @@ const MainBody = () => {
                                     transition={{ delay: 1.0, duration: 1 }}
                                     className="-mt-6 md:-mt-10"
                                 >
-                                    <p className="text-xl md:text-5xl text-gray-700 tracking-wider">
+                                    <p className="text-2xl md:text-5xl text-gray-700 tracking-wider">
                                         백엔드 개발자 <span className="text-black font-bold tracking-widest">김정승</span>입니다.
                                     </p>
                                     <p className="mt-12 text-md md:text-lg text-gray-600 leading-relaxed">

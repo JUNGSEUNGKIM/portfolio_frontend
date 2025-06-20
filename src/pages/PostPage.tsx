@@ -70,8 +70,11 @@ const PostPage = () => {
                             className="flex flex-col justify-between sm:pr-12 p-2"
                         >
                             <div className="flex flex-col justify-center flex-grow">
-                                <h1 className="text-3xl font-extrabold text-center mb-6 text-gray-900">
-                                    {previewData.title || '(제목 없음)'}
+                                <h1 className="text-4xl font-extrabold text-center text-gray-900">
+                                   [ {previewData.title?.split("-")[0] || '(제목 없음)'} ]
+                                </h1>
+                                <h1 className="text-xl font-extrabold text-center mb-6 text-gray-400">
+                                    {previewData.title?.split("-")[1] }
                                 </h1>
 
                                 <div className="text-sm text-gray-600 mb-2">
