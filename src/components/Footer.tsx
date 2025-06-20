@@ -1,11 +1,9 @@
 import {Link} from "react-router-dom";
+import React from "react";
 // import React from "react";
 
 function Footer() {
-    const handleClick = (e) => {
-        e.preventDefault(); // 이동 막기
-        alert("준비중입니다");
-    };
+
 
     return (
         <footer className="relative bg-gray-100 text-gray-600 pt-10 mt-20">
@@ -30,7 +28,7 @@ function Footer() {
                 <nav className="flex space-x-6 text-sm mt-4 md:mt-0">
                     <Link
                         to="/about"
-                        onClick={(e) => {
+                        onClick={(e: React.MouseEvent<HTMLAnchorElement>) => {
                             e.preventDefault();
                             alert("준비중입니다");
                             window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -48,7 +46,7 @@ function Footer() {
                     </Link>
                     <Link
                         to="/portfolio"
-                        onClick={(e) => {
+                        onClick={(e: React.MouseEvent<HTMLAnchorElement>) => {
                             e.preventDefault();
                             alert("준비중입니다");
                             window.scrollTo({ top: 0, behavior: 'smooth' });

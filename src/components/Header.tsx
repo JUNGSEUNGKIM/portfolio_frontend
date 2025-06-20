@@ -4,8 +4,8 @@ import {Link} from "react-router-dom";
 
 const Header: React.FC = () => {
     const [menuOpen, setMenuOpen] = useState(false);
-    const handleClick = (e) => {
-        e.preventDefault(); // 이동 막기
+    const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+        e.preventDefault();
         alert("준비중입니다");
     };
 
