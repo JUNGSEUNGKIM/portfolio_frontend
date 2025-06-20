@@ -140,8 +140,35 @@ const MainBody = () => {
 
     return (
         <section className="flex flex-col md:flex-row w-full min-h-screen text-black">
+            <div className="w-full min-h-[40vh]  items-center flex flex-col justify-center sm:hidden">
+            <div className="w-full flex flex-col items-center justify-center sm:py-16 mb-4 sm:mb-12 sm:min-h-[50vh] text-center ">
+                <motion.h1
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{delay:0.5, duration: 1 }}
+                    className="text-[4.2rem] md:text-[10rem] font-extrabold text-gray-300 leading-none"
+                >
+                    <span className="px-6 py-2 rounded">Back-End</span>
+                </motion.h1>
+
+                <motion.h1
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 1.0, duration: 1 }}
+                    className="-mt-6 md:-mt-10"
+                >
+                    <p className="text-2xl md:text-5xl text-gray-700 tracking-wider">
+                        백엔드 개발자 <span className="text-black font-bold tracking-widest">김정승</span>입니다.
+                    </p>
+                    <p className="mt-12 text-md md:text-lg text-gray-600 leading-relaxed">
+                        동료와의 협업에서는 <span className="font-bold px-1">역지사지</span>의 마음으로,<br />
+                        업무에서는 <span className="font-bold px-1">책임감 있는</span> 개발 자세로 임합니다.
+                    </p>
+                </motion.h1>
+            </div>
+            </div>
             {/* 왼쪽 고정 공간 (레이아웃 차지만 함, 스크롤 안 함) */}
-            <div className="w-full md:w-1/5 w- border-b md:border-b-0 md:border-r bg-white">
+            <div className="w-full md:w-1/5 md:border-b-0 md:border-r bg-white">
                 <div className="md:sticky md:top-0 md:h-screen flex flex-col items-center justify-center p-6">
                     <img src="/IMG_1051.jpeg" className="rounded-full w-40 h-40 object-cover mb-6" />
                     <h1 className="text-3xl font-bold">JUNGSEUNG</h1>
@@ -158,9 +185,10 @@ const MainBody = () => {
             <div className="w-full md:w-4/5 sm:px-6 py-10 space-y-32">
                 <div className="md:col-span-2  sm:p-6 text-black">
                     <div className="flex flex-col justify-start  items-center text-center sm:px-6 px-2">
-                        <div className="w-full min-h-[75vh]  items-center flex flex-col justify-center">
-                            <div className="w-full flex flex-col items-center justify-center sm:py-16 mb-4 sm:mb-12 sm:min-h-[50vh] text-center">
-                                <motion.h1
+                        <div className="w-full sm:min-h-[75vh]  items-center flex flex-col justify-center">
+                            <div className="hidden sm:flex flex-col items-center justify-center sm:py-16 mb-4 sm:mb-12 sm:min-h-[50vh] text-center">
+
+                            <motion.h1
                                     initial={{ opacity: 0, scale: 0.9 }}
                                     animate={{ opacity: 1, scale: 1 }}
                                     transition={{delay:0.5, duration: 1 }}

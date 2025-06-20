@@ -4,6 +4,10 @@ import {Link} from "react-router-dom";
 
 const Header: React.FC = () => {
     const [menuOpen, setMenuOpen] = useState(false);
+    const handleClick = (e) => {
+        e.preventDefault(); // 이동 막기
+        alert("준비중입니다");
+    };
 
     return (
         <motion.div
@@ -21,16 +25,17 @@ const Header: React.FC = () => {
 
                 {/* Center: Navigation (Desktop) */}
                 <nav className="hidden md:flex space-x-10 text-lg font-light">
-                    <Link to="/about" className="hover:text-gray-400">about</Link>
+                    <Link to="/about" onClick={handleClick} className="hover:text-gray-400">about</Link>
                     <Link to="/learn" className="hover:text-gray-400">learn</Link>
-                    <Link to="/portfolio" className="hover:text-gray-400">portfolio</Link>
+                    <Link to="/portfolio" onClick={handleClick} className="hover:text-gray-400">portfolio</Link>
+                    <Link to="/contact" className="hover:text-gray-400">contact</Link>
                     {/*<Link to="/blog" className="hover:text-gray-400">blog</Link>*/}
-                    <a href="#contact" className="hover:text-gray-400">contact</a>
+                    {/*<a href="#contact" className="hover:text-gray-400">contact</a>*/}
                 </nav>
 
                 {/* Right: Social Icons (Desktop) */}
                 {/* Right: Social Icons (Desktop) */}
-                <div className="hidden md:flex space-x-2 text-3xl w-16 gap-2">
+                <div className="hidden md:flex space-x-2 text-3xl w-16 gap-4">
                     <a href="https://github.com/JUNGSEUNGKIM" target="_blank" rel="noreferrer"
                        className="group relative w-8 h-8 flex items-center justify-center bg-gray-800 rounded-full hover:bg-white border border-gray-800 transition-colors">
                         <i className="fab fa-github text-white group-hover:text-gray-800"></i>
@@ -38,12 +43,12 @@ const Header: React.FC = () => {
                     {/*<a href="https://linkedin.com" target="_blank" rel="noreferrer" className="hover:text-blue-500">*/}
                     {/*    <i className="fab fa-linkedin"></i>*/}
                     {/*</a>*/}
-                    <a href="https://instagram.com" target="_blank" rel="noreferrer" className="hover:text-pink-400">
+                    <a href="https://www.instagram.com/perghost/" target="_blank" rel="noreferrer" className="hover:text-pink-400">
                         <i className="fab fa-instagram"></i>
                     </a>
-                    <a href="https://www.notion.so/your-notion-page" target="_blank" rel="noreferrer" className="hover:text-black">
-                        <i className="fas fa-file-alt"></i>
-                    </a>
+                    {/*<a href="https://www.notion.so/your-notion-page" target="_blank" rel="noreferrer" className="hover:text-black">*/}
+                    {/*    <i className="fas fa-file-alt"></i>*/}
+                    {/*</a>*/}
                 </div>
 
 
@@ -59,11 +64,25 @@ const Header: React.FC = () => {
             {/* Mobile Menu Dropdown */}
             {menuOpen && (
                 <div className="md:hidden mt-4 space-y-2 text-lg">
-                    <Link to="/about" onClick={() => setMenuOpen(!menuOpen)} className="block hover:text-gray-400">about</Link>
+                    <Link
+                        to="/about"
+                        onClick={(e) => {
+                            e.preventDefault();
+                            alert("준비중입니다");
+                            setMenuOpen(!menuOpen);
+                        }}
+                        className="block hover:text-gray-400"
+                    >
+                        about
+                    </Link>
                     <Link to="/learn" onClick={() => setMenuOpen(!menuOpen)} className="block hover:text-gray-400">learn</Link>
-                    <Link to="/portfolio" onClick={() => setMenuOpen(!menuOpen)} className="block hover:text-gray-400">portfolio</Link>
+                    <Link to="/portfolio" onClick={(e) => {
+                        e.preventDefault();
+                        alert("준비중입니다");
+                        setMenuOpen(!menuOpen);
+                    }} className="block hover:text-gray-400">portfolio</Link>
                     {/*<Link to="/blog" onClick={() => setMenuOpen(!menuOpen)} className="block hover:text-gray-400">blog</Link>*/}
-                    <Link to="#contact172.3" onClick={() => setMenuOpen(!menuOpen)} className="block hover:text-gray-400">contact</Link>
+                    <Link to="/contact" onClick={() => setMenuOpen(!menuOpen)} className="block hover:text-gray-400">contact</Link>
                 </div>
             )}
         </motion.div>
