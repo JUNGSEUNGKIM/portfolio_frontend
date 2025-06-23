@@ -19,6 +19,12 @@ import PostPreviewModal from "@/components/board/PostPreviewModal.tsx";
 import {useNavigate} from "react-router-dom";
 
 const MainBody = () => {
+
+    const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
+    const [showCursor, setShowCursor] = useState(true);
+
+
+
     const skills = [
         { label: "Java", level: "w-[50%]", category: "Language" },
         { label: "Python", level: "w-[30%]", category: "Language" },
@@ -227,7 +233,28 @@ const MainBody = () => {
                                     </div>
                                 </div>
                             </motion.div>
+                            {showCursor && (
+                                <div
+                                    className="fixed w-10 h-10 border border-blue-500 rounded-full pointer-events-none animate-pulse"
+                                    style={{
+                                        left: `${cursorPos.x - 20}px`,
+                                        top: `${cursorPos.y - 20}px`,
+                                        zIndex: 1000,
+                                    }}
+                                />
+                            )}
+
+
                             <motion.div
+                                onMouseEnter={() => {
+                                    setShowCursor(true);
+                                }}
+                                onMouseLeave={() => {
+                                    setShowCursor(false);
+                                }}
+                                onMouseMove={(e) => {
+                                    setCursorPos({x: e.clientX, y: e.clientY});
+                                }}
                                 className="w-full block p-2 my-4 hover:!cursor-ew-resize"
                                 initial={{opacity: 0}}
                                 animate={{opacity: 1}}
@@ -235,14 +262,14 @@ const MainBody = () => {
                             >
                                 <Swiper
                                     modules={[Mousewheel, FreeMode]}
-                                    mousewheel={{ releaseOnEdges: true }}
+                                    mousewheel={{releaseOnEdges: true}}
                                     freeMode={true}
                                     slidesPerView={1.2}
                                     className="h-full w-full"
                                     breakpoints={{
-                                        0: { slidesPerView: 1.2 },
-                                        768: { slidesPerView: 2.2 },
-                                        1024: { slidesPerView: 3.5 },
+                                        0: {slidesPerView: 1.2},
+                                        768: {slidesPerView: 2.2},
+                                        1024: {slidesPerView: 3.5},
                                     }}
                                 >
                                     {posts.map((post) => (
@@ -255,14 +282,14 @@ const MainBody = () => {
                                             {/*        description={post.subtitle}*/}
                                             {/*    />*/}
                                             {/*</div>*/}
-                                                <div onClick={() => handlePostClickPage(post)} className="cursor-pointer">
-                                                    <PostPreview
-                                                        image={post.image_url || '/default.jpg'}
-                                                        title={post.title}
-                                                        category={post.category}
-                                                        description={post.subtitle}
-                                                    />
-                                                </div>
+                                            <div onClick={() => handlePostClickPage(post)} className="cursor-pointer">
+                                                <PostPreview
+                                                    image={post.image_url || '/default.jpg'}
+                                                    title={post.title}
+                                                    category={post.category}
+                                                    description={post.subtitle}
+                                                />
+                                            </div>
                                         </SwiperSlide>
                                     ))}
                                     {/*<SwiperSlide>*/}
@@ -276,6 +303,7 @@ const MainBody = () => {
 
                                 </Swiper>
                             </motion.div>
+
                             {modalOpen && previewData && (
                                 <PostPreviewModal
                                     modalOpen={modalOpen}

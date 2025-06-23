@@ -151,6 +151,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {Swiper, SwiperSlide} from "swiper/react";
 import {Autoplay} from "swiper/modules";
+import {motion} from "framer-motion";
 
 
 gsap.registerPlugin(ScrollTrigger);
@@ -255,7 +256,130 @@ export default function AboutPage() {
 
     return (
         <div>
-            <div ref={topTable} className="h-80 bg-yellow-300 z-20"></div>
+            {/*<div ref={topTable} className="h-80 bg-yellow-300 z-20">*/}
+                <div ref={topTable}  className="bg-white  max-w-full overflow-y-auto">
+                    <motion.div
+                        className="shadow-md z-10 bg-white min-h-80 py-12"
+                        initial={{opacity: 0}}
+                        animate={{opacity: 1}}
+                        transition={{delay: 0.5, duration: 0.6}}
+                    >
+                        {/*<div className="shadow-md bg-white min-h-80 py-12">*/}
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-screen-lg mx-auto ">
+                            {/* 왼쪽 정보 */}
+                            <motion.div
+                                initial={{x: -100, opacity: 0}}
+                                animate={{x: 0, opacity: 1}}
+                                transition={{delay: 0.7, duration: 0.6}}
+                                className="flex flex-col justify-between sm:pr-12 p-2"
+                            >
+                                <div className="flex flex-col justify-center flex-grow">
+                                    <h1 className="text-4xl font-extrabold text-center text-gray-900">
+                                        [ (제목 없음) ]
+                                    </h1>
+                                    <h1 className="text-xl font-extrabold text-center mb-6 text-gray-400">
+                                        title
+                                    </h1>
+
+                                    <div className="text-sm text-gray-600 mb-2">
+                                        <div className="sm:flex sm:justify-between mb-1">
+                                            <p>📂 <b>카테고리:</b>category</p>
+                                            <div className="flex gap-x-2">
+                                                <p>📅 startdate</p>
+                                                <p>-</p>
+                                                <p>enddate</p>
+                                            </div>
+                                        </div>
+                                        <div className="flex sm:justify-end gap-x-4">
+                                            <p><b>소요 기간:</b> 일</p>
+                                            <p><b>진행 상태:</b></p>
+                                        </div>
+                                    </div>
+
+                                    <hr className="my-1 mb-4 border-gray-300"/>
+
+                                    <p className="text-gray-700 whitespace-pre-line mb-6 text-base text-left">
+                                        subtitle
+                                    </p>
+                                </div>
+
+                                <div className="mt-auto pt-8">
+                                    <h3 className="font-semibold text-sm text-gray-700 mb-2 text-left"></h3>
+                                    stack
+                                </div>
+                            </motion.div>
+
+                            {/* 오른쪽 이미지 */}
+                            <motion.div
+                                initial={{x: 100, opacity: 0}}
+                                animate={{x: 0, opacity: 1}}
+                                transition={{delay: 0.7, duration: 0.6}}
+                                className="w-full flex justify-center sm:pl-12"
+                            >
+
+                                <img
+                                    src='/3.png'
+                                    alt="타이틀 이미지"
+                                    className=" shadow-md object-cover"
+                                />
+
+                            </motion.div>
+                        </div>
+                        <div className="w-full h-1/4 px-4">
+                            <Swiper
+                                modules={[Autoplay]}
+                                autoplay={{ delay: 3999, disableOnInteraction: false }}
+                                loop={true}
+                                spaceBetween={10}
+                                className="w-full h-full"
+                                breakpoints={{
+                                    0: {
+                                        slidesPerView: 1, // 모바일
+                                    },
+                                    768: {
+                                        slidesPerView: 2, // 태블릿
+                                    },
+                                    1024: {
+                                        slidesPerView: 4, // 데스크탑 이상
+                                    },
+                                }}
+
+                            >
+                                <SwiperSlide>
+                                    <img src="/test1.mov" alt="Project 1" className="w-full h-full object-cover rounded-lg" />
+                                </SwiperSlide>
+                                <SwiperSlide>
+                                    <video autoPlay loop muted playsInline className="w-full h-full object-cover rounded-lg">
+                                        <source src="https://storage.arami.kr/s3/uploads/test1.mp4" type="video/mp4" />
+                                        Your browser does not support the video tag.
+                                    </video>
+                                </SwiperSlide>
+                                <SwiperSlide>
+                                    <video autoPlay loop muted playsInline className="w-full h-full object-cover rounded-lg">
+                                        <source src="https://storage.arami.kr/s3/uploads/test2.mp4" type="video/mp4" />
+                                        Your browser does not support the video tag.
+                                    </video>
+                                </SwiperSlide>
+                                <SwiperSlide>
+                                    <video autoPlay loop muted playsInline className="w-full h-full object-cover rounded-lg">
+                                        <source src="https://storage.arami.kr/s3/uploads/test3.mp4" type="video/mp4" />
+                                        Your browser does not support the video tag.
+                                    </video>
+                                </SwiperSlide>
+                                <SwiperSlide>
+                                    <video autoPlay loop muted playsInline className="w-full h-full object-cover rounded-lg">
+                                        <source src="https://storage.arami.kr/s3/uploads/test4.mp4" type="video/mp4" />
+                                        Your browser does not support the video tag.
+                                    </video>
+                                </SwiperSlide>
+                                {/* 필요한 만큼 SwiperSlide 계속 추가 */}
+                            </Swiper>
+                        </div>
+                    </motion.div>
+
+
+                {/*</div>*/}
+            </div>
             <div ref={containerRef} className="relative w-full bg-gray-50">
                 <div
                     ref={scrollWrapperRef}
