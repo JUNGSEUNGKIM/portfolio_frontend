@@ -110,14 +110,16 @@ const PostPage = () => {
                             initial={{ x: 100, opacity: 0 }}
                             animate={{ x: 0, opacity: 1 }}
                             transition={{delay: 0.7, duration: 0.6 }}
-                            className="w-full flex justify-center sm:pl-12"
+                            className="w-full flex justify-center sm:pl-12 h-full"
                         >
                             {previewData.image_url && (
-                                <img
-                                    src={previewData.image_url}
-                                    alt="타이틀 이미지"
-                                    className=" shadow-md object-cover"
-                                />
+                                <div className="aspect-[16/9] w-full max-w-3xl flex justify-center items-center">
+                                    <img
+                                        src={previewData.image_url}
+                                        alt="타이틀 이미지"
+                                        className="w-full object-cover rounded shadow-md"
+                                    />
+                                </div>
                             )}
                         </motion.div>
                     </div>
