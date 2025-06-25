@@ -48,7 +48,7 @@ export default function ContactForm() {
                             className="flex flex-col justify-between sm:pr-12 p-2"
                         >
                             <div className="flex flex-col justify-center flex-grow">
-                                <h1 className="text-8xl font-extrabold text-center text-gray-900 mb-4">
+                                <h1 className="text-6xl sm:text-8xl font-extrabold text-center al text-gray-900 mb-4">
                                     CONTACT
                                 </h1>
                                 <div className="flex flex-col text-left mt-12 text-gray-700 leading-loose text-sm sm:text-base md:text-lg gap-2 max-w-2xl mx-auto px-4">
@@ -110,25 +110,27 @@ export default function ContactForm() {
                 ) : (
 
 
-                    <form ref={form} onSubmit={sendEmail} className="w-full max-w-3xl space-x-4 grid grid-cols-2">
+                    <form ref={form} onSubmit={sendEmail} className="w-full max-w-3xl sm:space-x-4 grid sm:grid-cols-2">
 
-                        <div className="w-full space-y-2 flex flex-col gap-2 ">
+                        <div className="w-full sm:space-y-2 flex flex-col gap-2 ">
 
                             <input
                                 type="text"
                                 name="name"
                                 placeholder="이름"
                                 required
-                                className="w-full border border-gray-300 px-4 py-2 rounded"
+                                className="w-full border border-gray-300 px-4 py-2 rounded h-full"
                             />
                             <input
                                 type="email"
                                 name="email"
                                 placeholder="이메일"
                                 required
-                                className="w-full border border-gray-300 px-4 py-2 rounded"
+                                className="w-full border border-gray-300 px-4 py-2 rounded h-full"
                             />
                         </div>
+
+                        <div className="w-full sm:space-y-2 flex flex-col gap-2 mt-4 sm:mt-0">
 
                         <textarea
                             name="message"
@@ -137,7 +139,9 @@ export default function ContactForm() {
                             required
                             className="w-full border border-gray-300 px-4 py-2 rounded"
                         />
+                        </div>
                         <div></div>
+                        <div className="w-full sm:space-y-2 flex flex-col gap-2 mt-4 sm:mt-0 ">
                         <button
                             type="submit"
                             disabled={loading}
@@ -145,6 +149,7 @@ export default function ContactForm() {
                         >
                             {loading ? '전송 중...' : '메일 보내기'}
                         </button>
+                        </div>
                     </form>
                 )}
             </div>
