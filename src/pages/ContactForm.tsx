@@ -93,6 +93,13 @@ export default function ContactForm() {
                 </motion.div>
             </div>
 
+            <motion.div
+                className="w-full block p-2 my-4"
+                initial={{opacity: 0}}
+                animate={{opacity: 1}}
+                transition={{delay: 1.5, duration: 0.8}}
+            >
+
             <div className=" flex flex-col items-center justify-center px-6 py-16 ">
                 <h1 className="text-3xl font-extrabold text-left  text-gray-900 mb-4">
                     연락을 기다립니다.
@@ -130,16 +137,18 @@ export default function ContactForm() {
                             required
                             className="w-full border border-gray-300 px-4 py-2 rounded"
                         />
+                        <div></div>
                         <button
                             type="submit"
                             disabled={loading}
-                            className="bg-gray-500 text-white font-bold py-2 rounded  hover:bg-black disabled:opacity-50"
+                            className="bg-gray-500 mx-auto mt-12 w-full text-white font-bold py-2 rounded  hover:bg-black disabled:opacity-50"
                         >
                             {loading ? '전송 중...' : '메일 보내기'}
                         </button>
                     </form>
                 )}
             </div>
+            </motion.div>
 
         </>
 

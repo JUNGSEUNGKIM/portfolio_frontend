@@ -21,7 +21,7 @@ import {useNavigate} from "react-router-dom";
 const MainBody = () => {
 
     const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
-    const [showCursor, setShowCursor] = useState(true);
+    const [showCursor, setShowCursor] = useState(false);
 
 
 
@@ -142,8 +142,36 @@ const MainBody = () => {
             </div>
         );
     }
+    const postRef = useRef(null);
+    const [postVisible, setPostVisible] = useState(false);
+    const [hasScrolled, setHasScrolled] = useState(false);
 
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting && !hasScrolled) {
+                    setPostVisible(true);
+                } else {
+                    setPostVisible(false);
+                }
+            },
+            { threshold: 0.3 }
+        );
 
+        if (postRef.current) observer.observe(postRef.current);
+        return () => observer.disconnect();
+    }, [hasScrolled]);
+
+// 스크롤 감지 + 타이머로 hasScrolled 초기화
+    const handleSwiperScroll = () => {
+        setHasScrolled(true);
+        setPostVisible(false);
+
+        // 10초 뒤 다시 hasScrolled 해제
+        setTimeout(() => {
+            setHasScrolled(false);
+        }, 10000); // 10000ms = 10초
+    };
     return (
         <section className="flex flex-col md:flex-row w-full min-h-screen text-black">
             <div className="w-full min-h-[40vh]  items-center flex flex-col justify-center sm:hidden">
@@ -223,6 +251,7 @@ const MainBody = () => {
                                 initial={{opacity: 0}}
                                 animate={{opacity: 1}}
                                 transition={{delay: 1.5, duration: 0.8}}
+                                ref={postRef}
                             >
 
                                 <div className="flex items-center justify-center w-full ">
@@ -235,13 +264,36 @@ const MainBody = () => {
                             </motion.div>
                             {showCursor && (
                                 <div
-                                    className="fixed w-10 h-10 border border-blue-500 rounded-full pointer-events-none animate-pulse"
+                                    className="fixed pointer-events-none z-[1000] hidden sm:block"
                                     style={{
-                                        left: `${cursorPos.x - 20}px`,
-                                        top: `${cursorPos.y - 20}px`,
-                                        zIndex: 1000,
+                                        left: `${cursorPos.x -20}px`,
+                                        top: `${cursorPos.y -20}px`,
                                     }}
-                                />
+                                >
+                                    <motion.div
+                                        className="absolute z-50 pointer-events-none"
+                                        animate={{ x: [0, 20, 0] }}
+                                        transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                                    >
+                                        <div className="flex items-center space-x-2 px-6 py-4 rounded-full bg-white/60 shadow-lg backdrop-blur-md">
+                                            {[...Array(3)].map((_, i) => (
+                                                <svg
+                                                    key={i}
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    className="w-10 h-10 text-blue-500"
+                                                    fill="none"
+                                                    viewBox="0 0 24 24"
+                                                    stroke="currentColor"
+                                                    strokeWidth={4}
+                                                >
+                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                                                </svg>
+                                            ))}
+                                        </div>
+                                    </motion.div>
+
+
+                                </div>
                             )}
 
 
@@ -255,12 +307,13 @@ const MainBody = () => {
                                 onMouseMove={(e) => {
                                     setCursorPos({x: e.clientX, y: e.clientY});
                                 }}
-                                className="w-full block p-2 my-4 hover:!cursor-ew-resize"
+                                className="w-full block p-2 my-4 hover:!cursor-ew-resize relative cursor-none"
                                 initial={{opacity: 0}}
                                 animate={{opacity: 1}}
                                 transition={{delay: 1.5, duration: 0.8}}
                             >
                                 <Swiper
+                                    onSlideChange={handleSwiperScroll}
                                     modules={[Mousewheel, FreeMode]}
                                     mousewheel={{releaseOnEdges: true}}
                                     freeMode={true}
@@ -282,7 +335,7 @@ const MainBody = () => {
                                             {/*        description={post.subtitle}*/}
                                             {/*    />*/}
                                             {/*</div>*/}
-                                            <div onClick={() => handlePostClickPage(post)} className="cursor-pointer">
+                                            <div onClick={() => handlePostClickPage(post)} >
                                                 <PostPreview
                                                     image={post.image_url || '/default.jpg'}
                                                     title={post.title}
@@ -302,6 +355,29 @@ const MainBody = () => {
                                     {/*</SwiperSlide>*/}
 
                                 </Swiper>
+                                {postVisible && (
+                                    <motion.div
+                                        className="absolute right-24 top-1/2 -translate-y-1/2 z-50 pointer-events-none sm:hidden block"
+                                        animate={{ x: [0, 20, 0] }}
+                                        transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                                    >
+                                        <div className="flex items-center space-x-2 px-6 py-4 rounded-full bg-white/60 shadow-lg backdrop-blur-md">
+                                            {[...Array(3)].map((_, i) => (
+                                                <svg
+                                                    key={i}
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    className="w-10 h-10 text-blue-500"
+                                                    fill="none"
+                                                    viewBox="0 0 24 24"
+                                                    stroke="currentColor"
+                                                    strokeWidth={4}
+                                                >
+                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                                                </svg>
+                                            ))}
+                                        </div>
+                                    </motion.div>
+                                )}
                             </motion.div>
 
                             {modalOpen && previewData && (
@@ -574,7 +650,7 @@ const MainBody = () => {
                                 </section>
 
 
-                                <section className="items-center ">
+                                <section className="items-center " ref={ref}>
                                     <h2 className="font-bold border-b border-gray-300 mb-4 ">SKILL</h2>
                                     <div className="space-y-6 ">
                                         {skills.map((skill, index) => (
@@ -592,7 +668,7 @@ const MainBody = () => {
                                         ))}
                                     </div>
                                 </section>
-                                <section className="col-span-1 sm:col-span-2" ref={ref}>
+                                <section className="col-span-1 sm:col-span-2">
                                     <h2 className="font-bold border-b border-gray-300 mb-4">INTERVIEW</h2>
                                     <div className="space-y-6 text-left flex-col items-center pt-12">
                                         {QAList.map(({ question, answer }, index) => (
