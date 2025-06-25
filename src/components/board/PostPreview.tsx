@@ -21,7 +21,7 @@ const PostPreview: React.FC<PostPreviewProps> = ({ image, title, category, descr
                 className="w-full min-h-56 max-h-56 object-cover rounded-2xl shadow"
             />
             <CardContent className={`px-1 transition-all duration-300 ${expanded ? "max-h-[30vh]" : "max-h-28 overflow-hidden"}`}>
-                <p className="truncate text-l mb-1 text-black">{title}</p>
+                <p className="truncate text-l mb-1 text-black text-left">{title}</p>
                 <p className="text-black text-sm text-left">{category}</p>
                 <p className={`text-black text-sm hidden ${expanded ? "" : "line-clamp-3"}`}>
                     {description}

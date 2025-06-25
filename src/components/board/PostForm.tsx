@@ -168,7 +168,7 @@ export default function PostForm() {
                 subtitle: previewData.subtitle,
                 category: previewData.category,
                 start_date: previewData.start_date,
-                end_date: previewData.end_date,
+                end_date: previewData.end_date === '' ? null : previewData.end_date,
                 content: previewData.content,
                 status: previewData.status,
                 duration: previewData.duration,

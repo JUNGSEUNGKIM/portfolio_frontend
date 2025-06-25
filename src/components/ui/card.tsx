@@ -18,7 +18,7 @@ export const Card = ({ children, className, ...props }: CardProps) => {
 
 export const CardContent = ({ children, className }: CardProps) => {
     return (
-        <div className={`p-2 ${className}`}>
+        <div className={`py-2 ${className}`}>
             {children}
         </div>
     );

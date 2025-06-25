@@ -42,7 +42,10 @@ const PostPreviewModal: React.FC<PostPreviewModalProps> = ({ modalOpen, previewD
 
     if (previewData.end_date) {
         end = new Date(previewData.end_date);
+    }else {
+        end = new Date(); // 오늘 날짜로 대체
     }
+    console.log(end)
 
 // end가 null이 아닌 경우에만 diff 계산
     const diff = end

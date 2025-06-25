@@ -35,38 +35,27 @@ export default function RssFeedViewer() {
                         className="flex flex-col justify-between sm:pr-12 p-2"
                     >
                         <div className="flex flex-col justify-center flex-grow">
-                            <h1 className="text-4xl font-extrabold text-center text-gray-900">
-                                [ (제목 없음) ]
+                            <h1 className="text-8xl font-extrabold text-center text-gray-900 mb-4">
+                                LEARN
                             </h1>
-                            <h1 className="text-xl font-extrabold text-center mb-6 text-gray-400">
-                                title
-                            </h1>
-
-                            <div className="text-sm text-gray-600 mb-2">
-                                <div className="sm:flex sm:justify-between mb-1">
-                                    <p>📂 <b>카테고리:</b>category</p>
-                                    <div className="flex gap-x-2">
-                                        <p>📅 startdate</p>
-                                        <p>-</p>
-                                        <p>enddate</p>
-                                    </div>
-                                </div>
-                                <div className="flex sm:justify-end gap-x-4">
-                                    <p><b>소요 기간:</b> 일</p>
-                                    <p><b>진행 상태:</b></p>
-                                </div>
+                            <div className="flex flex-col text-left mt-12 text-gray-700 leading-loose text-sm sm:text-base md:text-lg gap-2 max-w-2xl mx-auto px-4">
+                                {/*<p> 프로젝트를 진행하면서 공부한 내용들을 모아두었습니다.</p>*/}
+                                {/*<p>*/}
+                                {/*     */}
+                                {/*</p>*/}
+                                {/*<p>*/}
+                                {/*    <strong>업무 외 시간에도 프로젝트를 진행할 만큼</strong> 열정과 몰입을 가지고 있습니다.*/}
+                                {/*</p>*/}
+                                {/*<p>*/}
+                                {/*    함께할 때 더 큰 시너지를 낼 수 있다고 믿고, 협업을 소중히 여깁니다.*/}
+                                {/*</p>*/}
+                                {/*<p>*/}
+                                {/*    부족한 부분은 <strong>성실함과 끈기</strong>로 채워 나가겠습니다.*/}
+                                {/*</p>*/}
+                                <p>
+                                    <strong>프로젝트를 진행하면서 공부한 내용들을 모아두었습니다.</strong>
+                                </p>
                             </div>
-
-                            <hr className="my-1 mb-4 border-gray-300"/>
-
-                            <p className="text-gray-700 whitespace-pre-line mb-6 text-base text-left">
-                                subtitle
-                            </p>
-                        </div>
-
-                        <div className="mt-auto pt-8">
-                            <h3 className="font-semibold text-sm text-gray-700 mb-2 text-left"></h3>
-                            stack
                         </div>
                     </motion.div>
 
