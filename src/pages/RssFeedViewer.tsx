@@ -64,16 +64,30 @@ export default function RssFeedViewer() {
                         initial={{x: 100, opacity: 0}}
                         animate={{x: 0, opacity: 1}}
                         transition={{delay: 0.7, duration: 0.6}}
-                        className="w-full flex justify-center sm:pl-12"
+                        className="w-full h-full flex justify-center mx-auto my-auto sm:pl-12"
                     >
 
                         <img
                             src='/3.png'
                             alt="타이틀 이미지"
-                            className=" shadow-md object-cover"
+                            className="shadow-md filter grayscale rounded-full w-full h-full object-cover "
                         />
 
                     </motion.div>
+                    {/*<motion.div*/}
+                    {/*    initial={{x: 100, opacity: 0}}*/}
+                    {/*    animate={{x: 0, opacity: 1}}*/}
+                    {/*    transition={{delay: 0.7, duration: 0.6}}*/}
+                    {/*    className="w-4/5 h-4/5 flex justify-center mx-auto my-auto sm:pl-12"*/}
+                    {/*>*/}
+
+                    {/*    <img*/}
+                    {/*        src="https://storage.arami.kr/uploads/1749772408267-0da3c34f.jpeg"*/}
+                    {/*        alt="타이틀 이미지"*/}
+                    {/*        className="shadow-md filter grayscale rounded-full w-full h-full object-contain"*/}
+                    {/*    />*/}
+
+                    {/*</motion.div>*/}
                 </div>
             </motion.div>
         </div>
