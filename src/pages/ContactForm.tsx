@@ -48,7 +48,7 @@ export default function ContactForm() {
                             className="flex flex-col justify-between sm:pr-12 p-2"
                         >
                             <div className="flex flex-col justify-center flex-grow">
-                                <h1 className="text-6xl sm:text-8xl font-extrabold text-center al text-gray-900 mb-4">
+                                <h1 className="text-6xl sm:text-8xl font-extrabold text-center text-gray-900 mb-4">
                                     CONTACT
                                 </h1>
                                 <div className="flex flex-col text-left mt-12 text-gray-700 leading-loose text-sm sm:text-base md:text-lg gap-2 max-w-2xl mx-auto px-4">

@@ -4,7 +4,9 @@ import {
 import {
     SiTypescript, SiJavascript, SiSpring, SiNestjs, SiFastapi, SiNextdotjs, SiFlutter,
     SiMysql, SiPostgresql, SiOracle, SiGithubactions, SiNginx, SiUbuntu, SiOpencv, SiGoogle, SiFfmpeg,
-    SiIntellijidea, SiDatagrip, SiPycharm, SiTypeorm, SiEjs, SiJquery
+    SiIntellijidea, SiDatagrip, SiPycharm, SiTypeorm, SiEjs, SiJquery,
+    SiNotion, SiSlack, SiJira, SiTrello, SiFigma, SiConfluence, SiGoogledrive, SiZoom,
+    SiGit, SiGithub,  SiFirebase,
 } from "react-icons/si";
 import { IconType } from "react-icons";
 
@@ -53,5 +55,22 @@ export const techMap: Record<string, TechMeta> = {
 
     "HTML": { bg: "bg-[#E34F26]", color: "text-white", Icon: FaHtml5, category: "Frontend" },
     "CSS": { bg: "bg-[#1572B6]", color: "text-white", Icon: FaCss3Alt, category: "Frontend" },
+
+    "Notion": { bg: "bg-[#000000]", color: "text-white", Icon: SiNotion, category: "Collaboration" },
+    "Slack": { bg: "bg-[#4A154B]", color: "text-white", Icon: SiSlack, category: "Collaboration" },
+    "Jira": { bg: "bg-[#0052CC]", color: "text-white", Icon: SiJira, category: "Collaboration" },
+    "Trello": { bg: "bg-[#0079BF]", color: "text-white", Icon: SiTrello, category: "Collaboration" },
+    "Figma": { bg: "bg-[#F24E1E]", color: "text-white", Icon: SiFigma, category: "Design" },
+    "Confluence": { bg: "bg-[#172B4D]", color: "text-white", Icon: SiConfluence, category: "Collaboration" },
+    "Google Drive": { bg: "bg-[#4285F4]", color: "text-white", Icon: SiGoogledrive, category: "Tools" },
+    "Zoom": { bg: "bg-[#2D8CFF]", color: "text-white", Icon: SiZoom, category: "Collaboration" },
+
+    "Git": { bg: "bg-[#F05032]", color: "text-white", Icon: SiGit, category: "Tools" },
+    "GitHub": { bg: "bg-[#181717]", color: "text-white", Icon: SiGithub, category: "Tools" },
+
+
+
+    "Firebase": { bg: "bg-[#FFCA28]", color: "text-black", Icon: SiFirebase, category: "Cloud" },
+
 
 };

@@ -191,7 +191,9 @@ export default function PostForm() {
         'Docker', 'GitHub Actions', 'Nginx', 'Ubuntu',
         'Oracle', 'MySQL', 'PostgreSQL', 'TypeORM',
         'OpenCV', 'MediaPipe', 'FFmpeg',
-        'IntelliJ', 'DataGrip', 'PyCharm', 'EJS', 'jQuery', 'HTML', 'CSS'
+        'IntelliJ', 'DataGrip', 'PyCharm', 'EJS', 'jQuery', 'HTML', 'CSS',
+        'Git', 'GitHub', 'Slack', 'Notion',
+        'Firebase', 'Jira', 'Confluence','Figma',
     ];
 
     return (
@@ -205,6 +207,7 @@ export default function PostForm() {
                     <option value="">카테고리를 선택하세요</option>
                     <option value="프로젝트">프로젝트</option>
                     <option value="사이드프로젝트">사이드프로젝트</option>
+                    <option value="실무 작업">실무 작업</option>
                     <option value="디자인">디자인</option>
                     <option value="공부">공부</option>
                 </select>

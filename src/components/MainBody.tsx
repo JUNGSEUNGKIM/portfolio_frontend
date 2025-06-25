@@ -275,12 +275,12 @@ const MainBody = () => {
                                         animate={{ x: [0, 20, 0] }}
                                         transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
                                     >
-                                        <div className="flex items-center space-x-2 px-6 py-4 rounded-full bg-white/60 shadow-lg backdrop-blur-md">
-                                            {[...Array(3)].map((_, i) => (
+                                        <div className="flex items-center space-x-1 px-4 py-2 rounded-full bg-white/60 shadow-lg backdrop-blur-md">
+                                            {[...Array(2)].map((_, i) => (
                                                 <svg
                                                     key={i}
                                                     xmlns="http://www.w3.org/2000/svg"
-                                                    className="w-10 h-10 text-blue-500"
+                                                    className="w-10 h-10 text-gray-500"
                                                     fill="none"
                                                     viewBox="0 0 24 24"
                                                     stroke="currentColor"
@@ -362,11 +362,11 @@ const MainBody = () => {
                                         transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
                                     >
                                         <div className="flex items-center space-x-2 px-6 py-4 rounded-full bg-white/60 shadow-lg backdrop-blur-md">
-                                            {[...Array(3)].map((_, i) => (
+                                            {[...Array(2)].map((_, i) => (
                                                 <svg
                                                     key={i}
                                                     xmlns="http://www.w3.org/2000/svg"
-                                                    className="w-10 h-10 text-blue-500"
+                                                    className="w-10 h-10 text-gray-500"
                                                     fill="none"
                                                     viewBox="0 0 24 24"
                                                     stroke="currentColor"
