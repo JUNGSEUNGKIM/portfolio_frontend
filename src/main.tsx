@@ -18,9 +18,12 @@ import 'swiper/css/pagination';
 import PostForm from "@/components/board/PostForm.tsx";
 import PostPage from "@/pages/PostPage.tsx";
 import ContactForm from "@/pages/ContactForm.tsx";
+import VisitorLogger from "@/components/common/VisitorLogger.tsx";
 
 createRoot(document.getElementById('root')!).render(
+
     <BrowserRouter>
+        <VisitorLogger />
         <div className="flex flex-col min-h-screen">
             <Header />
             <main className="flex-1 ">

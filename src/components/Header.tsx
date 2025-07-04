@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import { motion } from "framer-motion";
 import {Link} from "react-router-dom";
+import {API_BASE_URL} from "@/config.ts";
 
 const Header: React.FC = () => {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -8,6 +9,12 @@ const Header: React.FC = () => {
         e.preventDefault();
         alert("준비중입니다");
     };
+    const [count, setCount] = useState({ total: 0, today: 0 });
+    useEffect(() => {
+        fetch(`${API_BASE_URL}/visitor/count`)
+            .then(res => res.json())
+            .then(data => setCount(data));
+    }, []);
 
     return (
         <motion.div
@@ -49,6 +56,18 @@ const Header: React.FC = () => {
                     {/*<a href="https://www.notion.so/your-notion-page" target="_blank" rel="noreferrer" className="hover:text-black">*/}
                     {/*    <i className="fas fa-file-alt"></i>*/}
                     {/*</a>*/}
+
+                    <div className="text-sm opacity-50">
+                        {count&&(
+                            <div className="text-xs text-gray-300 flex flex-col gap-1">
+                                <div className="flex flex-row gap-2">👤 <span className="font-medium text-green-400">{count.today}</span> today</div>
+                                {/*<span className="mx-1">•</span>*/}
+                                <div className="flex flex-row gap-2">🌍 <span className="font-medium text-blue-400">{count.total}</span> total</div>
+                            </div>
+                        )}
+
+
+                    </div>
                 </div>
 
 
