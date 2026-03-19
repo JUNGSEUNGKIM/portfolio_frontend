@@ -114,8 +114,8 @@ function checkBoard(board: Board): { isComplete: boolean; errors: boolean[][] } 
 
 export default function SudokuGame() {
   const [difficulty, setDifficulty] = useState<Difficulty>("easy");
-  const [puzzle, setPuzzle] = useState<Board>([]);
-  const [solution, setSolution] = useState<Board>([]);
+  const [, setPuzzle] = useState<Board>([]);
+  const [, setSolution] = useState<Board>([]);
   const [board, setBoard] = useState<Board>([]);
   const [fixed, setFixed] = useState<boolean[][]>([]);
   const [selected, setSelected] = useState<[number, number] | null>(null);
