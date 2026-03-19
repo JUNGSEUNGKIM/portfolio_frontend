@@ -32,7 +32,7 @@ const Header: React.FC = () => {
 
                 {/* Center: Navigation (Desktop) */}
                 <nav className="hidden md:flex space-x-10 text-lg font-light">
-                    <Link to="/about" onClick={handleClick} className="hover:text-gray-400">about</Link>
+                    <Link to="/sudoku" className="hover:text-gray-400">about</Link>
                     <Link to="/learn" className="hover:text-gray-400">learn</Link>
                     <Link to="/portfolio" onClick={handleClick} className="hover:text-gray-400">portfolio</Link>
                     <Link to="/contact" className="hover:text-gray-400">contact</Link>

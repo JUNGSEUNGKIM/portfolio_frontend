@@ -152,6 +152,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {Swiper, SwiperSlide} from "swiper/react";
 import {Autoplay} from "swiper/modules";
 import {motion} from "framer-motion";
+import {Link} from "react-router-dom";
 
 
 gsap.registerPlugin(ScrollTrigger);
@@ -484,6 +485,11 @@ export default function AboutPage() {
                     </Swiper>
                 </div>
                 끝입니다 😄
+                <div className="mt-10 text-center">
+                    <Link to="/sudoku" className="inline-block px-8 py-3 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg font-medium text-lg transition">
+                        SUDOKU GAME
+                    </Link>
+                </div>
             </div>
         </div>
     );
